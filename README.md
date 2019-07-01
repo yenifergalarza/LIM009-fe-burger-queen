@@ -10,7 +10,7 @@ es difícil_](https://medium.com/dailyjs/the-deepest-reason-why-modern-javascrip
 Al elegir un _framework_ o _librería_ para nuestra interfaz, nos apoyamos en una
 serie de convenciones e implementaciones _probadas_ y _documentadas_ para
 resolver un problema común a toda interfaz web. Esto nos permite concentrarnos
-mejor (dedicar más tiempo) en las caractrísticas _específicas_ de
+mejor (dedicar más tiempo) en las características _específicas_ de
 nuestra aplicación.
 
 Cuando elegimos una de estas tecnologías no solo importamos un pedacito de
@@ -50,7 +50,7 @@ Esta es la información que tenemos del cliente:
 > | Café americano            |    5 |
 > | Café con leche            |    7 |
 > | Sandwich de jamón y queso |   10 |
-> | Jugo de frutas natural              |    7 |
+> | Jugo de frutas natural    |    7 |
 >
 > Y otro menú para el resto del día:
 >
@@ -85,7 +85,7 @@ costo total.
 ## Objetivos de aprendizaje
 
 1. El objetivo principal de es aprender a construir una _interfaz web_ usando
-el _framework_ elegido (React o Angular). Todos estos frameworks de
+el _framework_ elegido (React o Angular) o vanilla JS. Todos estos frameworks de
 Front-end atacan el mismo problema: **cómo mantener la interfaz y el estado
 sincronizados**. Así que esta experiencia espera familiarizarte con el concepto
 de _estado de pantalla_, y cómo cada cambio sobre el estado se va a
@@ -114,8 +114,8 @@ hasta la historia que puedas en el tiempo especificado.
 La lógica del proyecto debe estar implementada completamente en JavaScript
 (ES6+), HTML y CSS y empaquetada de manera automatizada.
 En este proyecto Sí está permitido usar librerías o frameworks
-(debes elegir entre [React](https://reactjs.org/) o
-[Angular](https://angular.io/)).
+(debes elegir entre [React](https://reactjs.org/),
+[Angular](https://angular.io/) o Vanilla Js).
 
 La aplicación debe ser un _Single Page App_. Los pedidos los tomaremos desde una
 _tablet_, pero **no queremos una app nativa**, sino una web app que sea
@@ -127,6 +127,9 @@ Necesitamos pensar bien en el aspecto UX de de quienes van a tomar los pedidos,
 
 La aplicación desplegada debe tener 80% o más el las puntuaciones de
 Performance, Progressive Web App, Accessibility y Best Practices de Lighthouse.
+
+Deberas de guardar la información de los pedidos realizados por
+lo cual te reocmendamos utilizar [Firebase](https://firebase.google.com/).
 
 La aplicación debe hacer uso de `npm-scripts` y contar con scripts `start`,
 `test`, `build` y `deploy`, que se encarguen de arrancar, correr las pruebas,
