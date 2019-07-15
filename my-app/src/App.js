@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
 import NavBar from "./components/navBar";
 import ProductList from "./components/productList";
-//import './App.css';
-
+import "./App.css";
 const initialProducts = [
   { id: 1, title: "hamburguesa simple de pollo", inventory: 0, price: 10.0 },
   { id: 2, title: "hamburguesa simple vegana", inventory: 0, price: 10.0 },
@@ -100,13 +99,38 @@ class App extends Component {
     return (
       <Fragment>
         <NavBar total={formatNumber(total)} />
-        <ProductList
-          available={available}
-          products={initialProducts}
-          addToCart={this.addToCart}
-          removeFromCart={this.removeFromCart}
-          deleteFromCart={this.deleteFromCart}
-        />
+        <section className="tile is-ancestor  pd-prodlist is-12 spaceEvenly">
+          <div className="box tile is-parent is-6 has-addons displayBlock ">
+            <div>
+              <div className="tabs is-fullwidth is-centered is-boxed">
+                <ul>
+                  <li>
+                    <a href="/#">Desayuno</a>
+                  </li>
+                  <li>
+                    <a href="/#">Todo el día</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="displayFlex">
+              <div className="tile is-child button is-warning is-12">
+                Bebidas
+              </div>
+              <div className="tile is-child button is-warning is-12">
+                Sandwiches
+              </div>
+            </div>
+          </div>
+
+          <ProductList
+            available={available}
+            products={initialProducts}
+            addToCart={this.addToCart}
+            removeFromCart={this.removeFromCart}
+            deleteFromCart={this.deleteFromCart}
+          />
+        </section>
       </Fragment>
     );
   }
