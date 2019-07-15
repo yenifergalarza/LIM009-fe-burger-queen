@@ -2,9 +2,9 @@ import React from 'react';
 import Product from './product'
 
 const ProductList = ({products,addToCart,removeFromCart,deleteFromCart,available})=>(
-    <div className="container">
-    <div clasname="column is-centered">
-      <div clasname="column is-narrow">
+    <div className="column is-centered box  is-4">
+    <div clasname="column ">
+      <div clasname="column ">
         {products.map(prod =>    
         <Product
         key={prod.id}
