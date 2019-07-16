@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/burgerqueen.png";
-const NavBar = total => {
+
+const NavBar = ({ total }) => {
   return (
     <nav className="navbar is-warning">
       <div className="container">

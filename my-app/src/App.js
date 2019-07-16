@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import NavBar from "./components/navBar";
 import ProductList from "./components/productList";
 import "./App.css";
+
 const initialProducts = [
   { id: 1, title: "hamburguesa simple de pollo", inventory: 0, price: 10.0 },
   { id: 2, title: "hamburguesa simple vegana", inventory: 0, price: 10.0 },
