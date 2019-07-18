@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
-import NavBar from "./components/navBar";
-import ProductList from "./components/productList";
+import NavBar from "./components/navBar.jsx";
+import ProductList from "./components/productList.jsx";
 import "./App.css";
+import ContainerMenu from "./components/ContainerMenu.jsx";
 
 const initialProducts = [
   { id: 1, title: "hamburguesa simple de pollo", inventory: 0, price: 10.0 },
@@ -20,8 +21,8 @@ const initialProducts = [
   { id: 14, title: "Huevo Extra", inventory: 0, price: 1.0 },
   { id: 15, title: "Café con leche", inventory: 0, price: 7.0 },
   { id: 16, title: "Café americano", inventory: 0, price: 5.0 },
-  { id: 13, title: "Sandwich de jamón y queso", inventory: 0, price: 10.0 },
-  { id: 14, title: "Jugo de frutas natural", inventory: 0, price: 7.0 }
+  { id: 17, title: "Sandwich de jamón y queso", inventory: 0, price: 10.0 },
+  { id: 18, title: "Jugo de frutas natural", inventory: 0, price: 7.0 }
 ];
 const formatNumber = number =>
   new Intl.NumberFormat("en-US", {
@@ -33,7 +34,8 @@ class App extends Component {
   state = {
     addedIds: [],
     quantityById: {},
-    products: initialProducts
+    products: initialProducts,
+    show:[]
   };
   addToCart = id => {
     const { addedIds, quantityById, products } = this.state;
@@ -50,6 +52,8 @@ class App extends Component {
       this.setState({ addedIds: newAddedIds, quantityById: newQuantityById });
     }
   };
+
+  show
   removeFromCart = id => {
     const { addedIds, quantityById } = this.state;
     if (quantityById[id]) {
@@ -101,28 +105,9 @@ class App extends Component {
       <Fragment>
         <NavBar total={formatNumber(total)} />
         <section className="tile is-ancestor  pd-prodlist is-12 spaceEvenly">
-          <div className="box tile is-parent is-6 has-addons displayBlock ">
-            <div>
-              <div className="tabs is-fullwidth is-centered is-boxed">
-                <ul>
-                  <li>
-                    <a href="/#">Desayuno</a>
-                  </li>
-                  <li>
-                    <a href="/#">Todo el día</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="displayFlex">
-              <div className="tile is-child button is-warning is-12">
-                Bebidas
-              </div>
-              <div className="tile is-child button is-warning is-12">
-                Sandwiches
-              </div>
-            </div>
-          </div>
+         <ContainerMenu>
+
+         </ContainerMenu>
 
           <ProductList
             available={available}
