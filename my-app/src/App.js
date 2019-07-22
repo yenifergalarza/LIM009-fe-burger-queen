@@ -23,6 +23,7 @@ const initialProducts = [
   { id: 13, title: "Sandwich de jamón y queso", inventory: 0, price: 10.0 },
   { id: 14, title: "Jugo de frutas natural", inventory: 0, price: 7.0 }
 ];
+
 const formatNumber = number =>
   new Intl.NumberFormat("en-US", {
     mininumFractionDigits: 2,
@@ -35,6 +36,7 @@ class App extends Component {
     quantityById: {},
     products: initialProducts
   };
+
   addToCart = id => {
     const { addedIds, quantityById, products } = this.state;
     const product = products.find(prod => prod.id === id);
