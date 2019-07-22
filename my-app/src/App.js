@@ -5,7 +5,7 @@ import "./App.css";
 import ContainerMenu from "./components/ContainerMenu.jsx";
 
 const initialProducts = [
-  { id: 1, title: "hamburguesa simple de pollo", inventory: 0, price: 10.0 },
+  { id: 1, title: "hamburguesa simple de pollo", inventory: 0, price: 10.0 , },
   { id: 2, title: "hamburguesa simple vegana", inventory: 0, price: 10.0 },
   { id: 3, title: "hamburguesa simple de carne", inventory: 0, price: 10.0 },
   { id: 4, title: "hamburguesa doble de pollo", inventory: 0, price: 15.0 },
