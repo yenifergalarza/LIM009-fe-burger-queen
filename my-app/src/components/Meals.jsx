@@ -1,42 +1,68 @@
 import React,{useState} from "react";
-import MealsAdditional from './MealsAdditional.jsx';
-import MealsDrinks from './MealsDrinks.jsx';
-import MealsHamburger from './MealsHamburger.jsx'
+import Button from '../components/generic_components/button'
+
+import dataProducts from '../data';
+import SubButton from '../components/generic_components/subButtons';
+
 
 const Meals = () => {
-
-const [TypeMeal,setTypeMeal] = useState('Hamburger');
-
-return(   <div className="displayFlex">
-<div className="tile is-child button is-warning is-12" onClick={()=>{setTypeMeal('Hamburger')}}>
- Hamburguesas
-</div>
-
-{TypeMeal === 'Hamburger' && (
-    <div className="tile is-child buttons is-12 is-centered columns is-mobile">
-<MealsHamburger></MealsHamburger>
-    </div>
-    )}
-
-<div className="tile is-child button is-warning is-12" onClick={()=>{setTypeMeal('Additional')}} >
-Acompañamientos
-</div>
-{TypeMeal === 'Additional' && (
-    <div className="tile is-child buttons is-12 is-centered columns is-mobile">
-  <MealsAdditional></MealsAdditional>
-    </div>  )}
-
-<div className="tile is-child button is-warning is-12" onClick={()=>{setTypeMeal('Drinks')}} >
-Bebidas
-</div>
-
-{TypeMeal === 'Drinks' && (
-<div className="tile is-child buttons is-12 is-centered columns is-mobile">
-    <MealsDrinks></MealsDrinks>
-</div>
-)}
-
-</div>   
- )};
-
+    const [stateProducts] = useState(dataProducts)
+    const state = stateProducts
+    const [product, setProduct] = useState(state)
+   
+    const filterBurguer = (products) => {
+      setProduct(state);
+      let newArray = [];
+      products.filter((element)=> {
+        if(element.type === "burguer") {
+          newArray.push(element)
+        }
+      })
+      console.log(newArray)
+      return  setProduct(newArray);
+    };
+  
+  
+    const filterAdditionals = (products) => {
+      setProduct(state);
+      let newArray = [];
+      products.filter((element)=> {
+        if(element.type === "additional") {
+          newArray.push(element)
+        }
+      })
+      console.log(newArray)
+     return setProduct(newArray);
+    }
+  
+    const filterDrinks = (products) => {
+      setProduct(state)
+      let newArray = []
+      products.filter((element) => {
+        if(element.type === "drinks") {
+          newArray.push(element)
+        }
+      })
+      console.log(newArray)
+      return setProduct(newArray)
+    }
+    
+    return (
+      < >
+  
+  <Button onclick={()=>{filterBurguer(state)}} 
+      text={"HAMBURGUESAS"}/>
+  
+  
+  <Button onclick={()=>{filterAdditionals(state)}} text={"ACOMPAÑAMIENTOS"}/>
+  
+  
+  <Button   onclick={()=>{filterDrinks(state)}}
+  text={"BEBIDAS"}/>
+  
+      <SubButton   productElement={product}/>
+  
+      </>
+    );
+  }
 export default Meals;
