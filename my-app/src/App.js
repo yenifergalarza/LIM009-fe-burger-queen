@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, {  Fragment,useState,setState} from "react";
 import NavBar from "./components/navBar.jsx";
 import ProductList from "./components/productList.jsx";
 import "./App.css";
@@ -13,32 +13,34 @@ const formatNumber = number =>
     maximunFractionDigits: 2
   }).format(number);
 
-class App extends Component {
-  state = {
-    addedIds: [],
-    quantityById: {},
-    products: dataProducts,
-    show:[]
-  };
-  addToCart = id => {
-    const { addedIds, quantityById, products } = this.state;
+const App=()=>{ 
+
+
+  const [addedIds, setAddedIds] = useState([]);
+  const [quantityById, setQuantityById] = useState({});
+const [products] = useState(dataProducts);
+
+
+  const addToCart = id => {
     const product = products.find(prod => prod.id === id);
-    const available = 1;
-    if (available > 0) {
+ 
       const newAddedIds = addedIds.find(prodId => prodId === id)
         ? addedIds
         : addedIds.concat(product.id);
       const newQuantityById = {
         ...quantityById,
         [id]: (quantityById[id] || 0) + 1
-      };
-      this.setState({ addedIds: newAddedIds, quantityById: newQuantityById });
-    }
+      };    
+       setQuantityById(newQuantityById);
+      setAddedIds(newAddedIds) ;
+  
+     return [addedIds,quantityById]
+    
   };
 
-  show
-  removeFromCart = id => {
-    const { addedIds, quantityById } = this.state;
+
+  const removeFromCart = id => {
+  
     if (quantityById[id]) {
       const newQuantityById = {
         ...quantityById,
@@ -47,21 +49,25 @@ class App extends Component {
       const newAddedIds = newQuantityById[id]
         ? addedIds
         : addedIds.filter(prodId => prodId !== id);
-      this.setState({ addedIds: newAddedIds, quantityById: newQuantityById });
+        setAddedIds(newAddedIds);
+        setQuantityById(newQuantityById);
     }
+    return [addedIds,quantityById]
   };
-  deleteFromCart = id => {
-    const { addedIds, quantityById } = this.state;
+  const deleteFromCart = id => {
+
     if (quantityById[id]) {
       const newQuantityById = {
         ...quantityById,
         [id]: undefined
       };
       const newAddedIds = addedIds.filter(prodId => prodId !== id);
-      this.setState({ addedIds: newAddedIds, quantityById: newQuantityById });
+      setAddedIds(newAddedIds);
+      setQuantityById(newQuantityById);
     }
+    return [addedIds,quantityById]
   };
-  getAvailable = (products, quantityById) => {
+  const getAvailable = (products, quantityById) => {
     return products.reduce(
       (res, product) => ({
         ...res,
@@ -70,7 +76,7 @@ class App extends Component {
       {}
     );
   };
-  getTotal = (products, addedIds, quantityById) => {
+ const getTotal = (products, addedIds, quantityById) => {
     return addedIds.reduce(
       (res, productId) =>
         res +
@@ -80,10 +86,10 @@ class App extends Component {
     );
   };
 
-  render() {
-    const { products, quantityById, addedIds } = this.state;
-    const available = this.getAvailable(products, quantityById);
-    const total = this.getTotal(products, addedIds, quantityById);
+  
+    // const { products, quantityById, addedIds } = state;
+    const available = getAvailable(products, quantityById);
+    const total = getTotal(products, addedIds, quantityById);
     return (
       <Fragment>
         <NavBar total={formatNumber(total)} />
@@ -95,14 +101,15 @@ class App extends Component {
           <ProductList
             available={available}
             products={dataProducts}
-            addToCart={this.addToCart}
-            removeFromCart={this.removeFromCart}
-            deleteFromCart={this.deleteFromCart}
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+            deleteFromCart={deleteFromCart}
           />
         </section>
       </Fragment>
     );
-  }
+  
+  
 }
 
 export default App;

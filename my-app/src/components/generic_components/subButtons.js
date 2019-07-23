@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Button from './button'
+
 
 const SubButton = ({productElement,fun}) => {
   console.log(productElement.length)
@@ -13,7 +13,8 @@ const SubButton = ({productElement,fun}) => {
     <div className="tile is-child buttons is-12 is-centered columns is-mobile">
         {productElement.map(function(individualProduct){
           return (
-            <Button className="button is-outlined column" onclick={()=>{console.log('chikiout')}} text={individualProduct.title}/>
+            <a href="/#" className="button is-outlined column" onclick={()=>{console.log('chikiout')}}>{individualProduct.title}</a>
+         
           )
         })
         }

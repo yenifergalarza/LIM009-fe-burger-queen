@@ -1,10 +1,12 @@
 import React from 'react';
+import './button.css'
 
 const Button = ({onclick, text}) => {
+
   return (
-    <>
-      <button  className="tile is-child button is-warning is-12" onClick={onclick}>{text}</button>
-    </>
+    <div displayFlex>
+      <button  className="tile is-child button is-warning is-12 w100" onClick={onclick}>{text}</button>
+    </div>
   )
 }
 
