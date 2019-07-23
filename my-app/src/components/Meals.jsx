@@ -48,7 +48,7 @@ const Meals = () => {
     }
     
     return (
-      < >
+      <div  className="displayFlex" >
   
   <Button onclick={()=>{filterBurguer(state)}} 
       text={"HAMBURGUESAS"}/>
@@ -62,7 +62,7 @@ const Meals = () => {
   
       <SubButton   productElement={product}/>
   
-      </>
+      </div>
     );
   }
 export default Meals;
