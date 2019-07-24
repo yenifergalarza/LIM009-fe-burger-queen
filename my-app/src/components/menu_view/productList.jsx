@@ -16,7 +16,6 @@ const ProductList = ({
             <Product
               key={prod.id}
               title={prod.title}
-              inventory={available[prod.id]}
               price={prod.price}
               addToCart={() => addToCart(prod.id)}
               removeFromCart={() => removeFromCart(prod.id)}

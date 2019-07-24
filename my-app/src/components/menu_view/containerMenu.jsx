@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Meals from "./meals";
 import Breakfast from "./breakfast";
+import dataProducts from "../../data";
 
-const ContainerMenu = () => {
+const ContainerMenu = ({ addProduct }) => {
   const [state, setState] = useState("breakfast");
   return (
     <div className="box tile is-parent is-6 has-addons displayBlock ">
@@ -42,7 +43,7 @@ const ContainerMenu = () => {
 
         {state === "AllMeals" && (
           <div>
-            <Meals />
+            <Meals allProducts={dataProducts} addProduct={addProduct} />
           </div>
         )}
       </div>

@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import dataProducts from "../../data";
 import Button from "../generic_components/button";
 import SubButton from "../generic_components/subButtons.js";
 
-const Meals = () => {
-  const [stateProducts] = useState(dataProducts);
-  const state = stateProducts;
-  const [product, setProduct] = useState(state);
+const Meals = ({ allProducts }) => {
+  const [product, setProduct] = useState([...allProducts]);
 
   const filterBurguer = products => {
-    setProduct(state);
+    setProduct(allProducts);
     let newArray = [];
     products.filter(element => {
       if (element.type === "burguer") {
@@ -22,7 +19,7 @@ const Meals = () => {
   };
 
   const filterAdditionals = products => {
-    setProduct(state);
+    setProduct(allProducts);
     let newArray = [];
     products.filter(element => {
       if (element.type === "additional") {
@@ -35,7 +32,7 @@ const Meals = () => {
   };
 
   const filterDrinks = products => {
-    setProduct(state);
+    setProduct(allProducts);
     let newArray = [];
     products.filter(element => {
       if (element.type === "drinks") {

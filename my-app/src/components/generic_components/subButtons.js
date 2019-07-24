@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./button";
 
-const SubButton = ({ productElement, fun }) => {
+const SubButton = ({ productElement, addProduct }) => {
   if (productElement.length === 18) {
     return <></>;
   }
@@ -12,7 +12,7 @@ const SubButton = ({ productElement, fun }) => {
           <Button
             className="button is-outlined column"
             onclick={() => {
-              console.log("chikiout");
+              addProduct(individualProduct.id)
             }}
             text={individualProduct.title}
           />

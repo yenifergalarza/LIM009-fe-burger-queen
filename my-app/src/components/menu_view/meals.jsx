@@ -1,44 +1,44 @@
 import React, { useState } from "react";
-import dataProducts from "../../data";
 import Button from "../generic_components/button";
 import SubButton from "../generic_components/subButtons.js";
 
-const Meals = () => {
-  const [stateProducts] = useState(dataProducts);
-  const state = stateProducts;
-  const [product, setProduct] = useState(state);
+const Meals = ({ allProducts, addProduct }) => {
+  const [product, setProduct] = useState([...allProducts]);
 
   const filterBurguer = products => {
-    setProduct(state);
+    setProduct(allProducts);
     let newArray = [];
     products.filter(element => {
       if (element.type === "burguer") {
         newArray.push(element);
       }
+      return newArray;
     });
     console.log(newArray);
     return setProduct(newArray);
   };
 
   const filterAdditionals = products => {
-    setProduct(state);
+    setProduct(allProducts);
     let newArray = [];
     products.filter(element => {
       if (element.type === "additional") {
         newArray.push(element);
       }
+      return newArray;
     });
     console.log(newArray);
     return setProduct(newArray);
   };
 
   const filterDrinks = products => {
-    setProduct(state);
+    setProduct(allProducts);
     let newArray = [];
     products.filter(element => {
       if (element.type === "drinks") {
         newArray.push(element);
       }
+      return newArray;
     });
     console.log(newArray);
     return setProduct(newArray);
@@ -48,26 +48,26 @@ const Meals = () => {
     <>
       <Button
         onclick={() => {
-          filterBurguer(state);
+          filterBurguer(allProducts);
         }}
         text={"HAMBURGUESAS"}
       />
 
       <Button
         onclick={() => {
-          filterAdditionals(state);
+          filterAdditionals(allProducts);
         }}
         text={"ACOMPAÑAMIENTOS"}
       />
 
       <Button
         onclick={() => {
-          filterDrinks(state);
+          filterDrinks(allProducts);
         }}
         text={"BEBIDAS"}
       />
 
-      <SubButton productElement={product} />
+      <SubButton productElement={product} addProduct={addProduct} />
     </>
   );
 };
