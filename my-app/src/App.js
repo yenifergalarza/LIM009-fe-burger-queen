@@ -12,7 +12,10 @@ const formatNumber = number =>
     maximunFractionDigits: 2
   }).format(number);
 
-const App = () => {
+  //appa
+const App=()=>{ 
+
+
   const [addedIds, setAddedIds] = useState([]);
   const [quantityById, setQuantityById] = useState({});
   const [products] = useState(dataProducts);
