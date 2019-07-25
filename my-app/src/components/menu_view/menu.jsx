@@ -5,8 +5,8 @@ import ContainerMenu from "./containerMenu.jsx";
 const MenuView = () => {
   const [products, setProducts] = useState([]);
 
-  const addProduct = (id) => {
-    const newProducts = [...products, { id }]
+  const addProduct = (id, title, price) => {
+    const newProducts = [...products, { id, title, price }];
     setProducts(newProducts);
   };
 

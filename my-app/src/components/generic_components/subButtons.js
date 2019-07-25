@@ -12,7 +12,11 @@ const SubButton = ({ productElement, addProduct }) => {
           <Button
             className="button is-outlined column"
             onclick={() => {
-              addProduct(individualProduct.id)
+              addProduct(
+                individualProduct.id,
+                individualProduct.title,
+                individualProduct.price
+              );
             }}
             text={individualProduct.title}
           />

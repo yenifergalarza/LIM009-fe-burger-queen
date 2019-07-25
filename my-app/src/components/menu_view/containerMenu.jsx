@@ -37,7 +37,7 @@ const ContainerMenu = ({ addProduct }) => {
       <div className="displayFlex">
         {state === "breakfast" && (
           <div>
-            <Breakfast />
+            <Breakfast allProducts={dataProducts} addProduct={addProduct}/>
           </div>
         )}
 

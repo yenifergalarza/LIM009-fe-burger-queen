@@ -14,7 +14,6 @@ const Meals = ({ allProducts, addProduct }) => {
       }
       return newArray;
     });
-    console.log(newArray);
     return setProduct(newArray);
   };
 
@@ -27,7 +26,6 @@ const Meals = ({ allProducts, addProduct }) => {
       }
       return newArray;
     });
-    console.log(newArray);
     return setProduct(newArray);
   };
 
@@ -40,7 +38,6 @@ const Meals = ({ allProducts, addProduct }) => {
       }
       return newArray;
     });
-    console.log(newArray);
     return setProduct(newArray);
   };
 
