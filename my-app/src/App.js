@@ -1,28 +1,11 @@
-import React, { Component, Fragment } from "react";
-import NavBar from "./components/navBar";
-import ProductList from "./components/productList";
+import React, {  Fragment,useState,setState} from "react";
+import NavBar from "./components/navBar.jsx";
+import ProductList from "./components/productList.jsx";
 import "./App.css";
+import ContainerMenu from "./components/ContainerMenu.jsx";
 
-const initialProducts = [
-  { id: 1, title: "hamburguesa simple de pollo", inventory: 0, price: 10.0 },
-  { id: 2, title: "hamburguesa simple vegana", inventory: 0, price: 10.0 },
-  { id: 3, title: "hamburguesa simple de carne", inventory: 0, price: 10.0 },
-  { id: 4, title: "hamburguesa doble de pollo", inventory: 0, price: 15.0 },
-  { id: 5, title: "hamburguesa doble vegana", inventory: 0, price: 15.0 },
-  { id: 6, title: "hamburguesa doble de carne", inventory: 0, price: 15.0 },
-  { id: 7, title: "Papas fritas", inventory: 0, price: 5.0 },
-  { id: 8, title: "Aros de cebolla", inventory: 0, price: 5.0 },
-  { id: 9, title: "Agua 500ml", inventory: 0, price: 5.0 },
-  { id: 10, title: "Agua 750ml", inventory: 0, price: 7.0 },
-  { id: 11, title: "Bebida/gaseosa 500ml", inventory: 0, price: 7.0 },
-  { id: 12, title: "Bebida/gaseosa 750ml", inventory: 0, price: 10.0 },
-  { id: 13, title: "Queso Extra", inventory: 0, price: 1.0 },
-  { id: 14, title: "Huevo Extra", inventory: 0, price: 1.0 },
-  { id: 15, title: "Café con leche", inventory: 0, price: 7.0 },
-  { id: 16, title: "Café americano", inventory: 0, price: 5.0 },
-  { id: 13, title: "Sandwich de jamón y queso", inventory: 0, price: 10.0 },
-  { id: 14, title: "Jugo de frutas natural", inventory: 0, price: 7.0 }
-];
+import dataProducts from './data';
+
 
 const formatNumber = number =>
   new Intl.NumberFormat("en-US", {
@@ -30,30 +13,22 @@ const formatNumber = number =>
     maximunFractionDigits: 2
   }).format(number);
 
-class App extends Component {
-  state = {
-    addedIds: [],
-    quantityById: {},
-    products: initialProducts
-  };
-
-  addToCart = id => {
-    const { addedIds, quantityById, products } = this.state;
-    const product = products.find(prod => prod.id === id);
-    const available = 1;
-    if (available > 0) {
       const newAddedIds = addedIds.find(prodId => prodId === id)
         ? addedIds
         : addedIds.concat(product.id);
       const newQuantityById = {
         ...quantityById,
         [id]: (quantityById[id] || 0) + 1
-      };
-      this.setState({ addedIds: newAddedIds, quantityById: newQuantityById });
-    }
+      };    
+       setQuantityById(newQuantityById);
+      setAddedIds(newAddedIds) ;
+     return [addedIds,quantityById]
+    
   };
-  removeFromCart = id => {
-    const { addedIds, quantityById } = this.state;
+
+
+  const removeFromCart = id => {
+  
     if (quantityById[id]) {
       const newQuantityById = {
         ...quantityById,
@@ -62,21 +37,25 @@ class App extends Component {
       const newAddedIds = newQuantityById[id]
         ? addedIds
         : addedIds.filter(prodId => prodId !== id);
-      this.setState({ addedIds: newAddedIds, quantityById: newQuantityById });
+        setAddedIds(newAddedIds);
+        setQuantityById(newQuantityById);
     }
+    return [addedIds,quantityById]
   };
-  deleteFromCart = id => {
-    const { addedIds, quantityById } = this.state;
+  const deleteFromCart = id => {
+
     if (quantityById[id]) {
       const newQuantityById = {
         ...quantityById,
         [id]: undefined
       };
       const newAddedIds = addedIds.filter(prodId => prodId !== id);
-      this.setState({ addedIds: newAddedIds, quantityById: newQuantityById });
+      setAddedIds(newAddedIds);
+      setQuantityById(newQuantityById);
     }
+    return [addedIds,quantityById]
   };
-  getAvailable = (products, quantityById) => {
+  const getAvailable = (products, quantityById) => {
     return products.reduce(
       (res, product) => ({
         ...res,
@@ -85,7 +64,7 @@ class App extends Component {
       {}
     );
   };
-  getTotal = (products, addedIds, quantityById) => {
+ const getTotal = (products, addedIds, quantityById) => {
     return addedIds.reduce(
       (res, productId) =>
         res +
@@ -95,48 +74,30 @@ class App extends Component {
     );
   };
 
-  render() {
-    const { products, quantityById, addedIds } = this.state;
-    const available = this.getAvailable(products, quantityById);
-    const total = this.getTotal(products, addedIds, quantityById);
+  
+    // const { products, quantityById, addedIds } = state;
+    const available = getAvailable(products, quantityById);
+    const total = getTotal(products, addedIds, quantityById);
     return (
       <Fragment>
         <NavBar total={formatNumber(total)} />
         <section className="tile is-ancestor  pd-prodlist is-12 spaceEvenly">
-          <div className="box tile is-parent is-6 has-addons displayBlock ">
-            <div>
-              <div className="tabs is-fullwidth is-centered is-boxed">
-                <ul>
-                  <li>
-                    <a href="/#">Desayuno</a>
-                  </li>
-                  <li>
-                    <a href="/#">Todo el día</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="displayFlex">
-              <div className="tile is-child button is-warning is-12">
-                Bebidas
-              </div>
-              <div className="tile is-child button is-warning is-12">
-                Sandwiches
-              </div>
-            </div>
-          </div>
+         <ContainerMenu>
+
+         </ContainerMenu>
 
           <ProductList
             available={available}
-            products={initialProducts}
-            addToCart={this.addToCart}
-            removeFromCart={this.removeFromCart}
-            deleteFromCart={this.deleteFromCart}
+            products={dataProducts}
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+            deleteFromCart={deleteFromCart}
           />
         </section>
       </Fragment>
     );
-  }
+  
+  
 }
 
 export default App;
