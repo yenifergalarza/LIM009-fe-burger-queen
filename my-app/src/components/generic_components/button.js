@@ -1,13 +1,16 @@
-import React from 'react';
-import './button.css'
+import React from "react";
 
-const Button = ({onclick, text}) => {
-
+const Button = ({ onclick, text }) => {
   return (
-    <div displayFlex>
-      <button  className="tile is-child button is-warning is-12 w100" onClick={onclick}>{text}</button>
-    </div>
-  )
-}
+    <>
+      <button
+        className="tile is-child button is-warning is-12  w100"
+        onClick={onclick}
+      >
+        {text}
+      </button>
+    </>
+  );
+};
 
-export default Button; 
+export default Button;
