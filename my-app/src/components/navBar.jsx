@@ -14,30 +14,31 @@ const NavBar = ({ total }) => {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="field is-grouped">
-                <p className="control">
+                <div className="control">
                   <a href="/#" className="button is-primary">
                     <span className="icon">
                       <i className="fas fa-pencil-alt"></i>
                     </span>
                     <span>orden</span>
                   </a>
-                </p>
-                <p className="control">
+                </div>
+                <div className="control">
                   <a href="/#" className="button is-primary">
                     <span className="icon">
                       <i className="fas fa-clock"></i>
                     </span>
                     <span>${total}</span>
-                  </a>
-                </p>
-                <ul className="navbar-end">
-                  <Link to="/cocina" className="navbar-item">
-                    <li>Cocina</li>
-                  </Link>
-                  <Link to="historial" className="navbar-item">
-                    <li>Historial</li>
-                  </Link>
-                </ul>
+                  </a></div>
+
+
+                <div className="control"><Link to="/cocina" className="button is-primary">
+                  Cocina
+                  </Link></div>
+                  <div className="control">
+                <Link to="historial" className="button is-primary">
+                  Historial
+                  </Link></div>
+
               </div>
             </div>
           </div>

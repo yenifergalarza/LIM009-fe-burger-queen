@@ -13,8 +13,9 @@ const MenuView = () => {
   return (
     <>
       <h1>Hello from MenuView</h1>
+      <div className="columns container is-fluid">
       <ContainerMenu addProduct={addProduct} />
-      <ProductList products={products} />
+      <ProductList products={products} /></div>
     </>
   );
 };

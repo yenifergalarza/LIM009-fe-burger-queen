@@ -12,7 +12,7 @@ const ProductList = ({
   console.log(products)
   
   return (
-    <div className="column is-centered box  is-4">
+    <div className="column is-centered box container is-5">
       <div clasname="column ">
         <div clasname="column ">
           {products.map(prod => (

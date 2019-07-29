@@ -10,7 +10,7 @@ const SubButton = ({ productElement, addProduct }) => {
       {productElement.map(function(individualProduct) {
         return (
           <Button
-            className="button is-outlined column"
+            classOfComponent={"button is-outlined "}
             onclick={() => {
               addProduct(
                 individualProduct.id,

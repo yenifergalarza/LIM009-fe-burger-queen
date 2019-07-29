@@ -6,7 +6,7 @@ import dataProducts from "../../data";
 const ContainerMenu = ({ addProduct }) => {
   const [state, setState] = useState("breakfast");
   return (
-    <div className="box tile is-parent is-6 has-addons displayBlock ">
+    <div className="box tile is-parent is-6 has-addons displayBlock container">
       <div>
         <div className="tabs is-fullwidth is-centered is-boxed">
           <ul>

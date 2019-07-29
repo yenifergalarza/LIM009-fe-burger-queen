@@ -48,6 +48,7 @@ const Meals = ({ allProducts, addProduct }) => {
           filterBurguer(allProducts);
         }}
         text={"HAMBURGUESAS"}
+        classOfComponent={"tile is-child button is-warning columns is-mobile"}
       />
 
       <Button
@@ -55,6 +56,8 @@ const Meals = ({ allProducts, addProduct }) => {
           filterAdditionals(allProducts);
         }}
         text={"ACOMPAÑAMIENTOS"}
+        classOfComponent={"tile is-child button is-warning columns is-mobile"}
+        
       />
 
       <Button
@@ -62,6 +65,7 @@ const Meals = ({ allProducts, addProduct }) => {
           filterDrinks(allProducts);
         }}
         text={"BEBIDAS"}
+        classOfComponent={"tile is-child button is-warning columns is-mobile"}
       />
 
       <SubButton productElement={product} addProduct={addProduct} />
