@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/burgerqueen.png";
 
-const NavBar = ({ total }) => {
+const NavBar = () => {
   return (
     <nav className="navbar is-warning">
       <div className="container">
@@ -22,20 +22,12 @@ const NavBar = ({ total }) => {
                     <span>orden</span>
                   </a>
                 </div>
-                <div className="control">
-                  <a href="/#" className="button is-primary">
-                    <span className="icon">
-                      <i className="fas fa-clock"></i>
-                    </span>
-                    <span>${total}</span>
-                  </a></div>
-
-
+              
                 <div className="control"><Link to="/cocina" className="button is-primary">
                   Cocina
                   </Link></div>
                   <div className="control">
-                <Link to="historial" className="button is-primary">
+                 <Link to="historial" className="button is-primary">
                   Historial
                   </Link></div>
 

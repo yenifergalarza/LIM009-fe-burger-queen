@@ -3,7 +3,7 @@ import Meals from "./meals";
 import Breakfast from "./breakfast";
 import dataProducts from "../../data";
 
-const ContainerMenu = ({ addProduct }) => {
+const ContainerMenu =         ({ addProduct }) => {
   const [state, setState] = useState("breakfast");
   return (
     <div className="box tile is-parent is-6 has-addons displayBlock container">

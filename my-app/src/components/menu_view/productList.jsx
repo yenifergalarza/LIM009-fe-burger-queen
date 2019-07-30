@@ -1,12 +1,12 @@
 import React from "react";
 import Product from "./product";
-
+import ButtonOfTotal from "./TotalPrice"
 const ProductList = ({
   products,
   addToCart,
   removeFromCart,
   deleteFromCart,
-  available
+  available,total
 }) => {
 
   console.log(products)
@@ -20,12 +20,14 @@ const ProductList = ({
               key={prod.id}
               title={prod.title}
               price={prod.price}
+              available={available}
               addToCart={() => addToCart(prod.id)}
               removeFromCart={() => removeFromCart(prod.id)}
               deleteFromCart={() => deleteFromCart(prod.id)}
             />
           ))}
         </div>
+   <  ButtonOfTotal total={total}></ButtonOfTotal>
       </div>
     </div>
   );
