@@ -5,12 +5,9 @@ const ProductList = ({
   products,
   addToCart,
   removeFromCart,
-  deleteFromCart,
-  available,total
+  deleteFromCart
+  // available
 }) => {
-
-  console.log(products)
-  
   return (
     <div className="column is-centered box container is-5">
       <div clasname="column ">
