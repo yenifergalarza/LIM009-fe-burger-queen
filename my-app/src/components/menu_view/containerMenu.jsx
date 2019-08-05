@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Meals from "./Meals.jsx";
-import Breakfast from "./Breakfast.jsx";
+import Meals from "./meals";
+import Breakfast from "./breakfast";
+import dataProducts from "../../data";
 
-const ContainerMenu = () => {
+const ContainerMenu =         ({ addProduct }) => {
   const [state, setState] = useState("breakfast");
   return (
-    <div className="box tile is-parent is-6 has-addons displayBlock ">
+    <div className="box tile is-parent is-6 has-addons displayBlock container">
       <div>
         <div className="tabs is-fullwidth is-centered is-boxed">
           <ul>
@@ -36,13 +37,13 @@ const ContainerMenu = () => {
       <div className="displayFlex">
         {state === "breakfast" && (
           <div>
-            <Breakfast></Breakfast>
+            <Breakfast allProducts={dataProducts} addProduct={addProduct}/>
           </div>
         )}
 
         {state === "AllMeals" && (
           <div>
-            <Meals></Meals>
+            <Meals allProducts={dataProducts} addProduct={addProduct} />
           </div>
         )}
       </div>

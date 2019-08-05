@@ -1,4 +1,5 @@
-const products = [{
+const products = [
+  {
     id: 1,
     title: "hamburguesa simple de pollo",
     category: "allmeals",
@@ -111,14 +112,14 @@ const products = [{
     price: 5.0
   },
   {
-    id: 13,
+    id: 17,
     title: "Sandwich de jamón y queso",
     category: "breakfast",
     type: "sandwich",
     price: 10.0
   },
   {
-    id: 14,
+    id: 18,
     title: "Jugo de frutas natural",
     category: "breakfast",
     type: "morningdrinks",
@@ -126,4 +127,4 @@ const products = [{
   }
 ];
 
-export default products
+export default products;
