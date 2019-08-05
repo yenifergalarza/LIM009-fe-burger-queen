@@ -15,42 +15,45 @@ const MenuView = () => {
   };
   //Aumentar contidad de productos de la lista
   const addToCart = id => {
-    products.forEach(prod => {
+    let productsNew =[...products];
+    productsNew.forEach(prod => {
       if (prod.id === id) {
         return (prod.counter = prod.counter + 1);
       }
     });
 
-    console.log(products);
+    console.log(productsNew);
 
-    setProducts(products);
+    setProducts(productsNew);
     return products;
   };
 
   //Disminuir cantidad de productos de la lista
   const removeFromCart = id => {
-    products.forEach(prod => {
+    let productsNew =[...products];
+    productsNew.forEach(prod => {
       if (prod.id === id && prod.counter > 0) {
         return (prod.counter = prod.counter - 1);
       }
     });
 
-    console.log(products);
+    console.log(productsNew);
 
-    setProducts(products);
+    setProducts(productsNew);
     return products;
   };
 
   //Eliminar producto de la lista
   const deleteFromCart = id => {
-    products.forEach((prod, index) => {
+    let productsNew =[...products];
+    productsNew.forEach((prod, index) => {
       if (prod.id === id) {
-        return products.splice(products[index], 1);
+        return productsNew.splice(productsNew[index], 1);
       }
 
     });
-    console.log(products);
-    setProducts(products)
+    console.log(productsNew);
+    setProducts(productsNew)
     return products;
   };
 
