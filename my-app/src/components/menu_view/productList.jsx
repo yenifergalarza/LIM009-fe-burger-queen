@@ -11,6 +11,7 @@ const ProductList = ({
   return (
     <div className="column is-centered box container is-5">
       <div clasname="column ">
+        
         <div clasname="column ">
           {products.map(prod => (
          
