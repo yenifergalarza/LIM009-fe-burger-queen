@@ -112,14 +112,14 @@ const products = [
     price: 5.000
   },
   {
-    id: 13,
+    id: 17,
     title: "Sandwich de jamón y queso",
     category: "breakfast",
     type: "sandwich",
     price: 10.00
   },
   {
-    id: 14,
+    id: 18,
     title: "Jugo de frutas natural",
     category: "breakfast",
     type: "morningdrinks",

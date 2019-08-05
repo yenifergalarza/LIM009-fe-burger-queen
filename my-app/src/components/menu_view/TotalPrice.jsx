@@ -8,8 +8,17 @@ const ButtonOfTotal = ({ total }) => {
       <span className="icon">
         <i className="fas fa-clock"></i>
       </span>
-      <span>${formatNumber(total)}</span>
-    </a></div>
+      <span>${ formatNumber(total)}</span>
+    </a>
+    
+    <a href="/#" className="button is-primary">
+      <span className="icon">
+        <i className="fas fa-clock"></i>
+      </span>
+      <span>enviar orden </span>
+    </a>
+    
+    </div>
 
 
   );
