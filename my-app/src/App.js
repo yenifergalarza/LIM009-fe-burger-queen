@@ -7,8 +7,6 @@ import KitchenView from "./components/kitchen_view/kitchen";
 import HistoryView from "./components/history_view/orders_history";
 import Default from "./components/default";
 
-
-
 const App = () => {
   return (
     <>
@@ -24,4 +22,3 @@ const App = () => {
 };
 
 export default App;
-

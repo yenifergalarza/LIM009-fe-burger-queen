@@ -1,7 +1,6 @@
 import React from "react";
 import Product from "./product";
 
-
 const ProductList = ({
   products,
   addToCart,
