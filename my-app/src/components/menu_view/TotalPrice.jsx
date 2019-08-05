@@ -6,14 +6,14 @@ const ButtonOfTotal = ({ total }) => {
     <div className="control">
     <a href="/#" className="button is-primary">
       <span className="icon">
-        <i className="fas fa-clock"></i>
+      <i class="fas fa-money-bill"></i>  
       </span>
       <span>${ formatNumber(total)}</span>
     </a>
     
     <a href="/#" className="button is-primary">
       <span className="icon">
-        <i className="fas fa-clock"></i>
+      <i class="fas fa-receipt"></i>
       </span>
       <span>enviar orden </span>
     </a>
