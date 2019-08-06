@@ -91,7 +91,7 @@ const MenuView = () => {
         {loading && <span>Document: Loading...</span>}
         {value && (
           <span>
-            Collection:{" "}
+         
             {value.docs.map(doc => (
               <React.Fragment key={doc.id}>
                 {JSON.stringify(doc.data())},{" "}
