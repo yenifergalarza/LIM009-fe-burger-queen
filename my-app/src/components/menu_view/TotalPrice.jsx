@@ -1,6 +1,6 @@
 import React from "react";
 
-const ButtonOfTotal = ({ total, sendOrders, products }) => {
+const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
   const formatNumber = number =>
     new Intl.NumberFormat("en-US", {
       mininumFractionDigits: 2,
@@ -21,13 +21,13 @@ const ButtonOfTotal = ({ total, sendOrders, products }) => {
         className="button is-primary"
         onClick={() => {
           console.log("sjsjs");
-          sendOrders(products);
+          sendOrders(products, client);
         }}
       >
         <span className="icon">
           <i class="fas fa-receipt"></i>
         </span>
-        <span>enviar orden </span>
+        <span>enviar orden</span>
       </a>
     </div>
   );

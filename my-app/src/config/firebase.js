@@ -1,5 +1,6 @@
 // Your web app's Firebase configuration
 import firebase from "firebase";
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDgGKewsPUQPwai71E-FePagG6XcHk0pOA",
   authDomain: "burguerqueen-666.firebaseapp.com",
@@ -10,5 +11,6 @@ export const firebaseConfig = {
   appId: "1:221577019452:web:1e57418e8a1d93d9"
 };
 
+export const firebaseInit = firebase.initializeApp(firebaseConfig);
 
-export const app = firebase.initializeApp(firebaseConfig);
+export const DB = firebaseInit.firestore().collection("pedidos");

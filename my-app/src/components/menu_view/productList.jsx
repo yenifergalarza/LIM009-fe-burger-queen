@@ -7,11 +7,13 @@ const ProductList = ({
   removeFromCart,
   deleteFromCart,
   getTotal,
-  sendOrders
+  sendOrders,
+  client
 }) => {
   return (
     <div className="column is-centered box container is-5">
       <div clasname="column ">
+        <h2>{client}</h2>
         <div clasname="column ">
           {products.map(prod => (
             <Product
@@ -25,12 +27,12 @@ const ProductList = ({
             />
           ))}
         </div>
-
         <ButtonOfTotal
           total={getTotal(products)}
           products={products}
           sendOrders={sendOrders}
-        ></ButtonOfTotal>
+          client={client}
+        />
       </div>
     </div>
   );

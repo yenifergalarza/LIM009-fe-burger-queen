@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import ProductList from "./productList.jsx";
 import ContainerMenu from "./containerMenu.jsx";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { DB } from "../../config/firebase";
+import { Client } from "./Cliente";
 
-import { app } from "../../config/firebase";
 const MenuView = () => {
   const [products, setProducts] = useState([]);
+  const [client, setClient] = useState("");
 
   //Añadir productos a la lista
   const addProduct = (id, title, price, counter) => {
     const newProducts = [...products, { id, title, price, counter }];
     setProducts(newProducts);
   };
+
   //Aumentar contidad de productos de la lista
   const addToCart = id => {
     let productsNew = [...products];
@@ -20,11 +23,7 @@ const MenuView = () => {
         return (prod.counter = prod.counter + 1);
       }
     });
-
-    console.log(productsNew);
-
-    setProducts(productsNew);
-    return products;
+    return setProducts(productsNew);
   };
 
   //Disminuir cantidad de productos de la lista
@@ -68,16 +67,15 @@ const MenuView = () => {
     });
     return emptyArrayContent;
   };
-  let DB = app.firestore().collection("pedidos");
 
   const [value, loading, error] = useCollection(DB, {
     snapshotListenOptions: { includeMetadataChanges: true }
   });
 
-  const sendOrders = products => {
+  const sendOrders = (products, clientName) => {
     console.log("entre a firebase", products);
     DB.add({
-      name: "juana",
+      name: clientName,
       cart: products,
       status: "pending",
       time: ""
@@ -86,6 +84,7 @@ const MenuView = () => {
 
   return (
     <>
+      <Client client={client} setClient={setClient} />
       <p>
         {error && <strong>Error: {JSON.stringify(error)}</strong>}
         {loading && <span>Document: Loading...</span>}
@@ -110,7 +109,8 @@ const MenuView = () => {
           deleteFromCart={deleteFromCart}
           getTotal={getTotal}
           sendOrders={sendOrders}
-        ></ProductList>
+          client={client}
+        />
       </div>
     </>
   );
