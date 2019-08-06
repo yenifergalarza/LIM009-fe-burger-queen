@@ -83,6 +83,16 @@ const MenuView = () => {
     }
   );
 
+  const sendOrders =(products)=>{
+    console.log("entre a firebase",products);
+DB.add({
+  name:"juana",
+  cart:products,
+  status:"pending",
+  time:"",
+})
+  };
+
   return (
     <>
       <p>
@@ -106,6 +116,7 @@ const MenuView = () => {
           removeFromCart={removeFromCart}
           deleteFromCart={deleteFromCart}
           getTotal={getTotal}
+          sendOrders={sendOrders}
         >
          
          </ProductList>
