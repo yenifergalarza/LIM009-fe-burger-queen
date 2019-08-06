@@ -1,16 +1,18 @@
 import React from "react";
 import Product from "./product";
-import ButtonOfTotal from "./TotalPrice"
+import ButtonOfTotal from "./TotalPrice";
 const ProductList = ({
   products,
   addToCart,
   removeFromCart,
   deleteFromCart,
-  getTotal
+  getTotal,
+  sendOrders
 }) => {
   return (
     <div className="column is-centered box container is-5">
       <div clasname="column ">
+        
         <div clasname="column ">
           {products.map(prod => (
          
@@ -25,8 +27,8 @@ const ProductList = ({
             /> ))}
        </div>
         
-   <ButtonOfTotal total={getTotal( products)}></ButtonOfTotal>
-       </div>
+   <ButtonOfTotal total={getTotal( products)} products={products} sendOrders={sendOrders}></ButtonOfTotal>
+   </div>
     </div>
   );
 };
