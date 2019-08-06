@@ -7,6 +7,7 @@ import { Client } from "./Cliente";
 
 const MenuView = () => {
   const [products, setProducts] = useState([]);
+  const [client, setClient] = useState("");
 
   //Añadir productos a la lista
   const addProduct = (id, title, price, counter) => {
@@ -71,10 +72,10 @@ const MenuView = () => {
     snapshotListenOptions: { includeMetadataChanges: true }
   });
 
-  const sendOrders = products => {
+  const sendOrders = (products, clientName) => {
     console.log("entre a firebase", products);
     DB.add({
-      name: "juana",
+      name: clientName,
       cart: products,
       status: "pending",
       time: ""
@@ -83,7 +84,7 @@ const MenuView = () => {
 
   return (
     <>
-     <Client />
+      <Client client={client} setClient={setClient} />
       <p>
         {error && <strong>Error: {JSON.stringify(error)}</strong>}
         {loading && <span>Document: Loading...</span>}
@@ -108,6 +109,7 @@ const MenuView = () => {
           deleteFromCart={deleteFromCart}
           getTotal={getTotal}
           sendOrders={sendOrders}
+          client={client}
         />
       </div>
     </>
