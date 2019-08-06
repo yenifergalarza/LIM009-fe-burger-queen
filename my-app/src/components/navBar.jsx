@@ -22,17 +22,20 @@ const NavBar = () => {
                     <span>orden</span>
                   </a>
                 </div>
-              
-                <div className="control"><Link to="/cocina" className="button is-primary">
-                <i class="fas fa-hamburger"></i>
-                  Cocina
-                  </Link></div>
-                  <div className="control">
-                 
-                 <Link to="historial" className="button is-primary"> <i className="fas fa-clock"></i>
-                  Historial
-                  </Link></div>
 
+                <div className="control">
+                  <Link to="/cocina" className="button is-primary">
+                    <i class="fas fa-hamburger"></i>
+                    Cocina
+                  </Link>
+                </div>
+                <div className="control">
+                  <Link to="historial" className="button is-primary">
+                    {" "}
+                    <i className="fas fa-clock"></i>
+                    Historial
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ProductList from "./productList.jsx";
 import ContainerMenu from "./containerMenu.jsx";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { app } from "../../config/firebase";
 
 const MenuView = () => {
   const [products, setProducts] = useState([]);
@@ -66,10 +68,39 @@ const MenuView = () => {
     });
     return emptyArrayContent;
   };
+  let DB = app.firestore().collection("pedidos");
+
+  const [value, loading, error] = useCollection(DB, {
+    snapshotListenOptions: { includeMetadataChanges: true }
+  });
+
+  const sendOrders = products => {
+    console.log("entre a firebase", products);
+    DB.add({
+      name: "juana",
+      cart: products,
+      status: "pending",
+      time: ""
+    });
+  };
 
   return (
     <>
-      <h1>Hello from MenuView</h1>
+      <p>
+        {error && <strong>Error: {JSON.stringify(error)}</strong>}
+        {loading && <span>Document: Loading...</span>}
+        {value && (
+          <span>
+            Collection:{" "}
+            {value.docs.map(doc => (
+              <React.Fragment key={doc.id}>
+                {JSON.stringify(doc.data())},{" "}
+              </React.Fragment>
+            ))}
+          </span>
+        )}
+      </p>
+
       <div className="columns container is-fluid">
         <ContainerMenu addProduct={addProduct} />
         <ProductList
@@ -78,7 +109,8 @@ const MenuView = () => {
           removeFromCart={removeFromCart}
           deleteFromCart={deleteFromCart}
           getTotal={getTotal}
-        />
+          sendOrders={sendOrders}
+        ></ProductList>
       </div>
     </>
   );
