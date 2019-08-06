@@ -4,6 +4,7 @@ export const Client = ({ client, setClient }) => {
   const onChange = e => {
     let string = e.target.value;
     setClient(string);
+    string = "";
   };
 
   return (

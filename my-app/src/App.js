@@ -16,8 +16,6 @@ const App = () => {
   return (
     <>
       <NavBar />
-      <h1>Hello from MenuView</h1>
-
       <Switch>
         <Route exact path="/" component={MenuView} />
         <Route path="/cocina" component={KitchenView} />
