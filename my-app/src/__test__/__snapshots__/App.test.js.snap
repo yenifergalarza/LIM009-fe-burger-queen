@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="navbar is-warning"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="navbar-brand"
+      >
+        <a
+          class="navbar-item App-Header"
+          href="/"
+        >
+          <img
+            alt="burgerqueen logo"
+            class="App-logo"
+            src="burgerqueen.png"
+          />
+          <h1
+            class="title has-text-white"
+          >
+            burgerQueen
+          </h1>
+        </a>
+        <div
+          class="navbar-end"
+        >
+          <div
+            class="navbar-item"
+          >
+            <div
+              class="field is-grouped"
+            >
+              <div
+                class="control"
+              >
+                <a
+                  class="button is-primary"
+                  href="/#"
+                >
+                  <span
+                    class="icon"
+                  >
+                    <i
+                      class="fas fa-pencil-alt"
+                    />
+                  </span>
+                  <span>
+                    orden
+                  </span>
+                </a>
+              </div>
+              <div
+                class="control"
+              >
+                <a
+                  class="button is-primary"
+                  href="/cocina"
+                >
+                  <i
+                    class="fas fa-hamburger"
+                  />
+                  Cocina
+                </a>
+              </div>
+              <div
+                class="control"
+              >
+                <a
+                  class="button is-primary"
+                  href="/historial"
+                >
+                   
+                  <i
+                    class="fas fa-clock"
+                  />
+                  Historial
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+    class="box tile is-parent is-12 has-addons displayBlock container"
+  >
+    <h2>
+      Nombre del Cliente
+    </h2>
+    <input
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    class="columns container is-fluid"
+  >
+    <div
+      class="box tile is-parent is-6 has-addons displayBlock container"
+    >
+      <div>
+        <div
+          class="tabs is-fullwidth is-centered is-boxed"
+        >
+          <ul>
+            <li>
+              <a
+                href="/#"
+              >
+                Desayuno
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#"
+              >
+                Todo el día
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="displayFlex"
+      >
+        <div>
+          <div
+            class="field is-grouped"
+          >
+            <button
+              class="tile is-child button is-warning columns is-mobile"
+            >
+              SANDWICHS
+            </button>
+          </div>
+          <div
+            class="field is-grouped"
+          >
+            <button
+              class="tile is-child button is-warning columns is-mobile"
+            >
+              BEBIDAS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="column is-centered box container is-5"
+    >
+      <div
+        clasname="column "
+      >
+        <h2
+          class=""
+        />
+        <div
+          clasname="column "
+        />
+        <div
+          class="control"
+        >
+          <button
+            class="button is-primary"
+          >
+            <span
+              class="icon"
+            >
+              <i
+                class="fas fa-money-bill"
+              />
+            </span>
+            <span>
+              $0
+            </span>
+          </button>
+          <a
+            class="button is-primary"
+            href="/#"
+          >
+            <span
+              class="icon"
+            >
+              <i
+                class="fas fa-receipt"
+              />
+            </span>
+            <span>
+              enviar orden
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

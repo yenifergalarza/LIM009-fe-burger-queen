@@ -25,7 +25,7 @@ const NavBar = () => {
 
                 <div className="control">
                   <Link to="/cocina" className="button is-primary">
-                    <i class="fas fa-hamburger"></i>
+                    <i className="fas fa-hamburger"></i>
                     Cocina
                   </Link>
                 </div>

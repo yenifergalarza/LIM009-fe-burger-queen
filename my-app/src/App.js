@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router , Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import "firebase/firestore";
@@ -14,7 +13,7 @@ const App = () => {
   // Initialize Firebase
 
   return (
-    <>
+    <Router>
       <NavBar />
       <Switch>
         <Route exact path="/" component={MenuView} />
@@ -22,7 +21,7 @@ const App = () => {
         <Route path="/historial" component={HistoryView} />
         <Route component={Default} />
       </Switch>
-    </>
+    </Router>
   );
 };
 

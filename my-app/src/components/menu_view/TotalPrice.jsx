@@ -11,7 +11,7 @@ const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
     <div className="control">
       <button className="button is-primary">
         <span className="icon">
-          <i class="fas fa-money-bill"></i>
+          <i className="fas fa-money-bill"></i>
         </span>
         <span>${formatNumber(total)}</span>
       </button>
@@ -25,7 +25,7 @@ const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
         }}
       >
         <span className="icon">
-          <i class="fas fa-receipt"></i>
+          <i className="fas fa-receipt"></i>
         </span>
         <span>enviar orden</span>
       </a>
