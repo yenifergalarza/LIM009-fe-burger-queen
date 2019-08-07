@@ -7,17 +7,17 @@ const SubButton = ({ productElement, addProduct }) => {
   }
   return (
     <div className="tile is-child buttons is-12 is-centered columns is-mobile">
-      {productElement.map(function(individualProduct) {
+      {productElement.map(individualProduct => {
         return (
           <Button
-          key={individualProduct}
+            key={individualProduct}
             classOfComponent={"button is-outlined "}
             onclick={() => {
               addProduct(
                 individualProduct.id,
                 individualProduct.title,
                 individualProduct.price,
-                individualProduct.counter=1,
+                (individualProduct.counter = 1)
               );
             }}
             text={individualProduct.title}

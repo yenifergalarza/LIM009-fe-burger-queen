@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Meals from "./meals";
 import Breakfast from "./breakfast";
-import dataProducts from "../../data";
+import { productsData } from "../../services/firebase";
 
 const ContainerMenu = ({ addProduct }) => {
   const [state, setState] = useState("breakfast");
+  const [productsDb, setProductsDb] = useState([]);
+
+  useEffect(() => {
+    productsData.onSnapshot(snap => {
+      let products = [];
+      snap.forEach(doc => {
+        products.push(doc.data());
+      });
+      console.log(products);
+      setProductsDb(products);
+    });
+  }, []);
+
   return (
     <div className="box tile is-parent is-6 has-addons displayBlock container">
       <div>
@@ -37,13 +50,13 @@ const ContainerMenu = ({ addProduct }) => {
       <div className="displayFlex">
         {state === "breakfast" && (
           <div>
-            <Breakfast allProducts={dataProducts} addProduct={addProduct}/>
+            <Breakfast allProducts={productsDb} addProduct={addProduct} />
           </div>
         )}
 
         {state === "AllMeals" && (
           <div>
-            <Meals allProducts={dataProducts} addProduct={addProduct} />
+            <Meals allProducts={productsDb} addProduct={addProduct} />
           </div>
         )}
       </div>

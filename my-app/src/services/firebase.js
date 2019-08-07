@@ -10,7 +10,10 @@ export const firebaseConfig = {
   messagingSenderId: "221577019452",
   appId: "1:221577019452:web:1e57418e8a1d93d9"
 };
-
 export const firebaseInit = firebase.initializeApp(firebaseConfig);
 
-export const DB = firebaseInit.firestore().collection("pedidos");
+const firestore = firebase.firestore();
+
+export const productsData = firestore.collection("menu");
+
+export const ordersData = firestore.collection("pedidos");

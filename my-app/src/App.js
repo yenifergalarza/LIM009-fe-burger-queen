@@ -6,7 +6,7 @@ import "firebase/firestore";
 import NavBar from "./components/navBar";
 import MenuView from "./components/menu_view/menu";
 import KitchenView from "./components/kitchen_view/kitchen";
-import HistoryView from "./components/history_view/orders_history";
+import HistoryView from "./components/history_view/ordersHistory";
 import Default from "./components/default";
 
 const App = () => {
