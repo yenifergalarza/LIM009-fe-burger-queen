@@ -78,14 +78,16 @@ const MenuView = () => {
       name: clientName,
       cart: products,
       status: "pending",
-      time: ""
+      time: new Date()
     });
+    setClient("");
+    setProducts([]);
   };
 
   return (
     <>
       <Client client={client} setClient={setClient} />
-      <p>
+      {/* <p>
         {error && <strong>Error: {JSON.stringify(error)}</strong>}
         {loading && <span>Document: Loading...</span>}
         {value && (
@@ -98,7 +100,7 @@ const MenuView = () => {
             ))}
           </span>
         )}
-      </p>
+      </p> */}
 
       <div className="columns container is-fluid">
         <ContainerMenu addProduct={addProduct} />

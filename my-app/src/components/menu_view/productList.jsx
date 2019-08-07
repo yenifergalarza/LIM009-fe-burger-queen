@@ -13,7 +13,7 @@ const ProductList = ({
   return (
     <div className="column is-centered box container is-5">
       <div clasname="column ">
-        <h2>{client}</h2>
+        <h2 className="">{client}</h2>
         <div clasname="column ">
           {products.map(prod => (
             <Product
