@@ -68,16 +68,14 @@ const MenuView = () => {
     return emptyArrayContent;
   };
 
-  const [value, loading, error] = useCollection(DB, {
-    snapshotListenOptions: { includeMetadataChanges: true }
-  });
+
 
   const sendOrders = (products, clientName) => {
     console.log("entre a firebase", products);
     DB.add({
       name: clientName,
       cart: products,
-      status: "pending",
+      status: "pendiente",
       time: new Date()
     });
     setClient("");
