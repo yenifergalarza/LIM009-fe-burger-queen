@@ -1,0 +1,111 @@
+import React,{useEffect,useState} from "react";
+
+import { firebaseInit } from "../../config/firebase";
+const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
+  const [hourState, setHourState] = useState(0);
+  const [minuteState, setMinuteState] = useState(0);
+  const [secondState, setSecondState] = useState(0);
+  const hour = time.toDate().getHours();
+  const minute = time.toDate().getMinutes();
+  const second = time.toDate().getSeconds();
+
+  const checkTime = i => {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  };
+
+  useEffect(() => {
+    const startTime = () => {
+      let dateNow = new Date();
+      let hourNow = dateNow.getHours();
+      let minuteNow = dateNow.getMinutes();
+      let secondNow = dateNow.getSeconds();
+  
+      minuteNow = checkTime(minuteNow- minute);
+      secondNow = checkTime(secondNow - second);
+      hourNow= checkTime(hourNow) -hourNow ;
+      setTimeout(startTime, 500);
+      setHourState( hourNow);
+      setMinuteState(minuteNow);
+      setSecondState(secondNow);
+      console.log(`${minuteNow}${secondNow}`)
+    };
+  
+  
+  startTime();
+  });
+  const updateOrder = text => {
+    const docOrder = firebaseInit.firestore().doc(`pedidos/${id}`);
+    docOrder.update({
+      status: text
+    }) };
+
+
+
+  return (
+    <>
+      <article
+        style={{ overflow: "scroll" }}
+        className="message is-dark tile is-child  is-5 is-12-mobile"
+        key={keyPENDING}
+      >
+        <div className="message-header">
+          <p>Pedido de {name} </p>
+          <p>{`${hourState} :${minuteState} : ${secondState}`}</p>
+          <div class="control">
+            <div class="tags has-addons has-centered">
+              <span class="tag is-light">Pedido</span>
+              <span class="tag is-warning">Cocinado</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="message-body">
+          <h5 class="subtitle is-5">
+            {hour}:{minute}:{second}
+          </h5>
+          <h4 class="title is-4"> </h4>
+          <table>
+            <thead>
+              <tr className=" table is-striped ">
+                <th>
+                  <h4 className="subtitle is-4">N</h4>
+                </th>
+                <th className="subtitle ">Order</th>
+              </tr>
+            </thead>{" "}
+            <tbody>
+              {cart.map(product => (
+                <tr>
+                  <td>{product.counter}</td>
+                  <td>{product.title}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <button
+            class="button is-success"
+            onClick={() => {
+              updateOrder("entregado");
+            }}
+          >
+            Entregado
+          </button>
+          <button
+            class="button is-danger"
+            onClick={() => {
+              updateOrder("cancelado");
+            }}
+          >
+            Cancelado
+          </button>
+        </div>
+      </article>
+    </>
+  );
+};
+
+export default OrderCooking;

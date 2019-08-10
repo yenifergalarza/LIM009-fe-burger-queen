@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProductList from "./productList.jsx";
 import ContainerMenu from "./containerMenu.jsx";
-import { useCollection } from "react-firebase-hooks/firestore";
+/* import { useCollection } from "react-firebase-hooks/firestore"; */
 import { DB } from "../../config/firebase";
 import { Client } from "./Cliente";
 
