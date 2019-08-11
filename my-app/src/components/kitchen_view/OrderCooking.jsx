@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import { firebaseInit } from "../../config/firebase";
 const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
@@ -8,12 +8,10 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
   const hour = time.toDate().getHours();
   const minute = time.toDate().getMinutes();
   const second = time.toDate().getSeconds();
+  let stop = false;
 
-  const checkTime = i => {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
+  const handlerStoppedLoop = () => {
+    stop = true;
   };
 
   useEffect(() => {
@@ -22,27 +20,39 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
       let hourNow = dateNow.getHours();
       let minuteNow = dateNow.getMinutes();
       let secondNow = dateNow.getSeconds();
-  
-      minuteNow = checkTime(minuteNow- minute);
-      secondNow = checkTime(secondNow - second);
-      hourNow= checkTime(hourNow) -hourNow ;
-      setTimeout(startTime, 500);
-      setHourState( hourNow);
+
+      minuteNow = minuteNow - minute;
+      secondNow = secondNow - second;
+      hourNow = hourNow - hour;
+
+      if (secondNow <= -1 && secondNow >= -29) {
+        secondNow = secondNow + 60;
+      }
+
+      if (minuteNow <= -1 && minuteNow >= -30) {
+        minuteNow = minuteNow + 60;
+      }
+
+      const loop = setTimeout(startTime, 500);
+
+      if (stop) {
+        clearTimeout(loop);
+      }
+
       setMinuteState(minuteNow);
       setSecondState(secondNow);
-      console.log(`${minuteNow}${secondNow}`)
+      setHourState(hourNow);
+      console.log(`${hourNow}`);
     };
-  
-  
-  startTime();
+
+    startTime();
   });
   const updateOrder = text => {
     const docOrder = firebaseInit.firestore().doc(`pedidos/${id}`);
     docOrder.update({
       status: text
-    }) };
-
-
+    });
+  };
 
   return (
     <>
@@ -97,7 +107,7 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
           <button
             class="button is-danger"
             onClick={() => {
-              updateOrder("cancelado");
+              updateOrder("cancelado") && handlerStoppedLoop();
             }}
           >
             Cancelado
@@ -107,5 +117,4 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
     </>
   );
 };
-
 export default OrderCooking;
