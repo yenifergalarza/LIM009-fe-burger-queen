@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
+import React, { useEffect, useState } from "react";
+
+const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
   const [hourState, setHourState] = useState(0);
   const [minuteState, setMinuteState] = useState(0);
   const [secondState, setSecondState] = useState(0);
@@ -7,6 +9,43 @@ import React, { useEffect, useState } from "react";const OrderFinished = ({ keyP
   const second = time.toDate().getSeconds();
   let stop = true;
 
+  
+  useEffect(() => {
+    const startTime = () => {
+      let dateNow = new Date();
+      let hourNow = dateNow.getHours();
+      let minuteNow = dateNow.getMinutes();
+      let secondNow = dateNow.getSeconds();
+
+      minuteNow = minuteNow - minute;
+      secondNow = secondNow - second;
+      hourNow = hourNow - hour;
+
+      if (secondNow <= -1 && secondNow >= -54) {
+        secondNow = secondNow + 60;
+      }
+
+      if (minuteNow <= -1 && minuteNow >= -54) {
+        minuteNow = minuteNow + 60;
+      }
+      if (hourNow <= -1 && hourNow >= -23) {
+        hourNow = hourNow + 24;
+      }
+
+      const loop = setTimeout(startTime, 500);
+
+      if (stop) {
+        clearTimeout(loop);
+      }
+
+      setMinuteState(minuteNow);
+      setSecondState(secondNow);
+      setHourState(hourNow);
+      console.log(`${hourNow}`);
+    };
+
+    startTime();
+  });
 
 
   useEffect(() => {
@@ -41,7 +80,7 @@ import React, { useEffect, useState } from "react";const OrderFinished = ({ keyP
     };
 
     startTime();
-  });
+  },[]);
   return (
     <>
       <article
@@ -83,6 +122,7 @@ import React, { useEffect, useState } from "react";const OrderFinished = ({ keyP
               ))}
             </tbody>
           </table>
+         
         </div>
       </article>
     </>

@@ -25,8 +25,8 @@ const KitchenView = () => {
       <section class="hero is-white">
         <div class="hero-body ">
           <div class="container ">
-            <h1 class="title has-text-centered">Primary title</h1>
-            <h2 class="subtitle has-text-centered">Primary subtitle</h2>
+            <h1 class="title has-text-centered">Revisa el estado de los pedidos</h1>
+            <h2 class="subtitle has-text-centered">Y actualizalos</h2>
 
           </div>
         </div>
@@ -80,7 +80,7 @@ const KitchenView = () => {
             </div>
           )}
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 };

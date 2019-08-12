@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { firebaseInit } from "../../config/firebase";
 const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
   const [hourState, setHourState] = useState(0);
@@ -25,11 +24,11 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
       secondNow = secondNow - second;
       hourNow = hourNow - hour;
 
-      if (secondNow <= -1 && secondNow >= -29) {
+      if (secondNow <= -1 && secondNow >= -54) {
         secondNow = secondNow + 60;
       }
 
-      if (minuteNow <= -1 && minuteNow >= -30) {
+      if (minuteNow <= -1 && minuteNow >= -54) {
         minuteNow = minuteNow + 60;
       }
 
@@ -46,7 +45,7 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
     };
 
     startTime();
-  });
+  },[]);
   const updateOrder = text => {
     const docOrder = firebaseInit.firestore().doc(`pedidos/${id}`);
     docOrder.update({

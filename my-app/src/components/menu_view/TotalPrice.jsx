@@ -8,8 +8,8 @@ const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
     }).format(number);
 
   return (
-    <div className="control">
-      <button className="button is-primary">
+    <div className="buttons has-addons box is-centered">
+      <button className="button is-dark">
         <span className="icon">
           <i class="fas fa-money-bill"></i>
         </span>
@@ -18,7 +18,7 @@ const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
 
       <a
         href="/#"
-        className="button is-primary"
+        className="button is-dark"
         onClick={() => {
           console.log("sjsjs");
           sendOrders(products, client);
