@@ -1,11 +1,86 @@
-import React from "react";
-import { useCollection } from "react-firebase-hooks/firestore";
+import React, { useEffect, useState } from "react";
+import { useCollectionDataOnce,useCollection } from "react-firebase-hooks/firestore";
 
 import { DB } from "../../config/firebase";
 import OrderPending from "../kitchen_view/OrderPending.jsx";
 import OrderCooking from "../kitchen_view/OrderCooking";
 import OrderFinished from "../kitchen_view/OrderFinished";
 const KitchenView = () => {
+  const valueTotal = useCollectionDataOnce(DB, {
+    snapshotListenOptions: { includeMetadataChanges: true }
+  });
+
+  const [timeState, setTimeState] = useState([]);
+  useEffect(() => {
+
+      // You can await here
+      let newValueTotal =  [...valueTotal];
+      setTimeState(newValueTotal);
+      const newTime = [...timeState, { minute: 0, second: 0, hour: 0 }];
+      return setTimeState(newTime);
+    },[]);
+
+  /*   const [timeState, setTimeState] = useState([]);
+  let newValueTotal = valueTotal; 
+  if (loadingTotal == !true) {
+    setTimeState(newValueTotal);
+    let newTime = [...timeState, { minute: 0, second: 0, hour: 0 }];
+  setTimeState(newTime); } */
+  const handlerStoppedLoop = stopParam => {
+    stopParam = true;
+  };
+
+  const startTime = (hour, minute, second, booleanStop, timeState, id) => {
+    let dateNow = new Date();
+    let hourNow = dateNow.getHours();
+    let minuteNow = dateNow.getMinutes();
+    let secondNow = dateNow.getSeconds();
+    minuteNow = minuteNow - minute;
+    secondNow = secondNow - second;
+    hourNow = hourNow - hour;
+
+    if (secondNow <= -1 && secondNow >= -29) {
+      secondNow = secondNow + 60;
+    }
+
+    if (minuteNow <= -1 && minuteNow >= -30) {
+      minuteNow = minuteNow + 60;
+    }
+
+    let hourNew = [...timeState];
+    hourNew.forEach(count => {
+      if (count.id === id) {
+        return (count.hour = hourNew);
+      }
+      setTimeState(hourNow);
+    });
+
+    let secondNew = [...timeState];
+    secondNew.forEach(count => {
+      if (count.id === id) {
+        return (count.second = secondNow);
+      }
+      setTimeState(secondNew);
+    });
+
+    let minuteNew = [...timeState];
+    minuteNew.forEach(count => {
+      if (count.id === id) {
+        return (count.minute = minuteNow);
+      }
+      setTimeState(minuteNew);
+    });
+
+    const loop = setTimeout(startTime, 500);
+
+    if (booleanStop) {
+      clearTimeout(loop);
+    }
+  };
+
+  //crear un estadoo con toda la data de pedidos (donde seteo ese reloj y el),luego crear una funcion que
+  //recorra cada elemento de ese stado y lo indentifique en da archivo .jsx
+
   const [value, loading, error] = useCollection(
     DB.where("status", "==", "pendiente"),
     {
@@ -27,7 +102,6 @@ const KitchenView = () => {
           <div class="container ">
             <h1 class="title has-text-centered">Primary title</h1>
             <h2 class="subtitle has-text-centered">Primary subtitle</h2>
-
           </div>
         </div>
       </section>
@@ -54,6 +128,9 @@ const KitchenView = () => {
             <div className="tile is-parent is-12-desktop  is-12-mobile table-container">
               {valueCooking.docs.map(doc => (
                 <OrderCooking
+                  timeState={timeState}
+                  handlerStoppedLoop={handlerStoppedLoop}
+                  startTime={startTime}
                   key={doc.id}
                   name={doc.data().name}
                   time={doc.data().time}

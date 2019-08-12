@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
+import React, { useEffect, useState } from "react";
+const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
   const [hourState, setHourState] = useState(0);
   const [minuteState, setMinuteState] = useState(0);
   const [secondState, setSecondState] = useState(0);
@@ -6,8 +7,6 @@ import React, { useEffect, useState } from "react";const OrderFinished = ({ keyP
   const minute = time.toDate().getMinutes();
   const second = time.toDate().getSeconds();
   let stop = true;
-
-
 
   useEffect(() => {
     const startTime = () => {
@@ -41,6 +40,7 @@ import React, { useEffect, useState } from "react";const OrderFinished = ({ keyP
     };
 
     startTime();
+    setTimeout(startTime, 500);
   });
   return (
     <>

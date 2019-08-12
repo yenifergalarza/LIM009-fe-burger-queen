@@ -1,57 +1,67 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { firebaseInit } from "../../config/firebase";
-const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
-  const [hourState, setHourState] = useState(0);
-  const [minuteState, setMinuteState] = useState(0);
-  const [secondState, setSecondState] = useState(0);
+const OrderCooking = ({
+  timeState,
+  keyPENDING,
+  id,
+  time,
+  name,
+  status,
+  cart,
+  handlerStoppedLoop,
+  startTime
+}) => {
   const hour = time.toDate().getHours();
   const minute = time.toDate().getMinutes();
   const second = time.toDate().getSeconds();
-  let stop = false;
 
-  const handlerStoppedLoop = () => {
-    stop = true;
-  };
+  let stop = false;
+  const [secondState, setSecondState] = useState(0);
+  const [minuteState, setMinuteState] = useState(0);
+  const [hourState, setHourState] = useState(0);
+  let individualHour = useRef(0);
+  let individualSecond = useRef(0);
+  let individualMinute = useRef(0);
 
   useEffect(() => {
-    const startTime = () => {
-      let dateNow = new Date();
-      let hourNow = dateNow.getHours();
-      let minuteNow = dateNow.getMinutes();
-      let secondNow = dateNow.getSeconds();
-
-      minuteNow = minuteNow - minute;
-      secondNow = secondNow - second;
-      hourNow = hourNow - hour;
-
-      if (secondNow <= -1 && secondNow >= -29) {
-        secondNow = secondNow + 60;
+    let timeReference = [...timeState];
+    timeReference.forEach(doc => {
+      if (doc.id === id) {
+        return (individualHour.current = doc.hour);
       }
+      return individualHour;
+    });
 
-      if (minuteNow <= -1 && minuteNow >= -30) {
-        minuteNow = minuteNow + 60;
+    timeReference.forEach(doc => {
+      if (doc.id === id) {
+        return (individualMinute.current = doc.minute);
       }
+      return individualMinute;
+    });
 
-      const loop = setTimeout(startTime, 500);
-
-      if (stop) {
-        clearTimeout(loop);
+    timeReference.forEach(doc => {
+      if (doc.id === id) {
+        return (individualSecond.current = doc.hour);
       }
+      return individualSecond;
+    });
+    startTime(hour, minute, second, stop, timeState, id);
 
-      setMinuteState(minuteNow);
-      setSecondState(secondNow);
-      setHourState(hourNow);
-      console.log(`${hourNow}`);
-    };
+    setHourState(individualHour);
+    setMinuteState(individualMinute);
+    setSecondState(individualSecond);
+  }, [startTime, hour, minute, second, stop, timeState, id, setMinuteState]);
 
-    startTime();
-  });
-  const updateOrder = text => {
+  const updateOrder = (text, handlerStoppedLoop, id) => {
     const docOrder = firebaseInit.firestore().doc(`pedidos/${id}`);
     docOrder.update({
       status: text
     });
+
+    if (text === "cancelado") {
+      handlerStoppedLoop(false);
+    }
   };
 
   return (
@@ -63,7 +73,9 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
       >
         <div className="message-header">
           <p>Pedido de {name} </p>
+
           <p>{`${hourState} :${minuteState} : ${secondState}`}</p>
+
           <div class="control">
             <div class="tags has-addons has-centered">
               <span class="tag is-light">Pedido</span>
@@ -99,7 +111,7 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
           <button
             class="button is-success"
             onClick={() => {
-              updateOrder("entregado");
+              updateOrder("entregado", handlerStoppedLoop(stop), id);
             }}
           >
             Entregado
@@ -107,7 +119,7 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
           <button
             class="button is-danger"
             onClick={() => {
-              updateOrder("cancelado") && handlerStoppedLoop();
+              updateOrder("cancelado", handlerStoppedLoop(stop), id);
             }}
           >
             Cancelado
