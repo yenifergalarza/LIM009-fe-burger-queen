@@ -20,6 +20,8 @@ const KitchenView = () => {
       return setTimeState(newValueTotal);
     });
     const newTime = [...timeState, { minute: 0, second: 0, hour: 0 }];
+
+
     return setTimeState(newTime);
     // You can await here
   }, [timeState]);
