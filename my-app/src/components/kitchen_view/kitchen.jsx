@@ -1,6 +1,6 @@
 import React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
-
+import Footer from "../footer";
 import { DB } from "../../config/firebase";
 import OrderPending from "../kitchen_view/OrderPending.jsx";
 import OrderCooking from "../kitchen_view/OrderCooking";
@@ -20,6 +20,7 @@ const KitchenView = () => {
   const [valueCooking] = useCollection(DB.where("status", "==", "cocinando"), {
     snapshotListenOptions: { includeMetadataChanges: true }
   });
+
   return (
     <>
       <section class="hero is-white">
@@ -31,14 +32,15 @@ const KitchenView = () => {
           </div>
         </div>
       </section>
-      <div className="box tile is-ancestor  " style={{ height: 100 + "vh" }}>
-        <div className="box tile is-vertical" style={{ height: 150 + "vh" }}>
+      <div className="box tile is-ancestor  " style={{ height: 100 + "vh" ,padding:0}}>
+        <div className="box tile is-vertical" style={{ height: 150 + "vh" ,padding:0}}>
           {error && <strong>Error: {JSON.stringify(error)}</strong>}
-          {loading && <span>Collection: Loading...</span>}
+          {loading && <progress class="progress is-medium is-dark" max="100">45%</progress>}
           {value && (
-            <div className="tile is-parent is-12-desktop  is-12-mobile table-container">
+            <div className="tile is-parent is-12-desktop  is-12-mobile table-container"          style={{padding: 2+ "em"}}>
               {value.docs.map(doc => (
                 <OrderPending
+      
                   key={doc.id}
                   name={doc.data().name}
                   time={doc.data().time}
@@ -51,9 +53,10 @@ const KitchenView = () => {
           )}
 
           {valueCooking && (
-            <div className="tile is-parent is-12-desktop  is-12-mobile table-container">
+            <div className="tile is-parent is-12-desktop  is-12-mobile table-container"style={{padding: 2+ "em"}}>
               {valueCooking.docs.map(doc => (
                 <OrderCooking
+                
                   key={doc.id}
                   name={doc.data().name}
                   time={doc.data().time}
@@ -66,9 +69,10 @@ const KitchenView = () => {
           )}
 
           {valueFinished && (
-            <div className="tile is-parent is-12-desktop  is-12-mobile table-container">
+            <div className="tile is-parent is-12-desktop  is-12-mobile table-container" style={{padding: 2+ "em"}}>
               {valueFinished.docs.map(doc => (
                 <OrderFinished
+                
                   key={doc.id}
                   name={doc.data().name}
                   time={doc.data().time}
@@ -79,8 +83,12 @@ const KitchenView = () => {
               ))}
             </div>
           )}
+
+        <Footer ></Footer>
         </div>
+
       </div>
+    
     </>
   );
 };

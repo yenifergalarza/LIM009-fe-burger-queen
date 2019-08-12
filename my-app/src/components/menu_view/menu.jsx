@@ -4,8 +4,10 @@ import ContainerMenu from "./containerMenu.jsx";
 /* import { useCollection } from "react-firebase-hooks/firestore"; */
 import { DB } from "../../config/firebase";
 import { Client } from "./Cliente";
+import Footer from "../footer";
 
 const MenuView = () => {
+
   const [products, setProducts] = useState([]);
   const [client, setClient] = useState("");
 
@@ -83,7 +85,7 @@ const MenuView = () => {
   };
 
   return (
-    <>
+    < >
       <Client client={client} setClient={setClient} />
       {/* <p>
         {error && <strong>Error: {JSON.stringify(error)}</strong>}
@@ -100,9 +102,10 @@ const MenuView = () => {
         )}
       </p> */}
 
-      <div className="columns container is-fluid">
+      <div className="columns container is-fluid box " style={{height: 45+"vh"}}>
         <ContainerMenu addProduct={addProduct} />
         <ProductList
+
           products={products}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
@@ -111,7 +114,9 @@ const MenuView = () => {
           sendOrders={sendOrders}
           client={client}
         />
+       
       </div>
+      <Footer ></Footer>
     </>
   );
 };
