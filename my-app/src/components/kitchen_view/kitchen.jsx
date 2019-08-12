@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useCollectionDataOnce,useCollection } from "react-firebase-hooks/firestore";
+import {
+  useCollection
+} from "react-firebase-hooks/firestore";
 
 import { DB } from "../../config/firebase";
 import OrderPending from "../kitchen_view/OrderPending.jsx";
 import OrderCooking from "../kitchen_view/OrderCooking";
 import OrderFinished from "../kitchen_view/OrderFinished";
 const KitchenView = () => {
-  const valueTotal = useCollectionDataOnce(DB, {
-    snapshotListenOptions: { includeMetadataChanges: true }
-  });
 
   const [timeState, setTimeState] = useState([]);
   useEffect(() => {
+    DB.onSnapshot(snap => {
+      let newValueTotal = [];
+      snap.forEach(doc => {
+        newValueTotal.push(doc.data());
+      });
 
-      // You can await here
-      let newValueTotal =  [...valueTotal];
-      setTimeState(newValueTotal);
-      const newTime = [...timeState, { minute: 0, second: 0, hour: 0 }];
-      return setTimeState(newTime);
-    },[]);
+      return setTimeState(newValueTotal);
+    });
+    const newTime = [...timeState, { minute: 0, second: 0, hour: 0 }];
+    return setTimeState(newTime);
+    // You can await here
+  }, [timeState]);
 
   /*   const [timeState, setTimeState] = useState([]);
   let newValueTotal = valueTotal; 
@@ -50,9 +54,9 @@ const KitchenView = () => {
     let hourNew = [...timeState];
     hourNew.forEach(count => {
       if (count.id === id) {
-        return (count.hour = hourNew);
+        return (count.hour = hourNow);
       }
-      setTimeState(hourNow);
+      setTimeState(hourNew);
     });
 
     let secondNew = [...timeState];

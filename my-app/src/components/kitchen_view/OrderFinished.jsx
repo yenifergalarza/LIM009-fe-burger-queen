@@ -9,7 +9,7 @@ const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
   let stop = true;
 
   useEffect(() => {
-    const startTime = () => {
+   /*  const startTime = () => {
       let dateNow = new Date();
       let hourNow = dateNow.getHours();
       let minuteNow = dateNow.getMinutes();
@@ -40,7 +40,7 @@ const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
     };
 
     startTime();
-    setTimeout(startTime, 500);
+    setTimeout(startTime, 500); */
   });
   return (
     <>

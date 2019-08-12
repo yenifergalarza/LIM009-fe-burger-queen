@@ -73,7 +73,7 @@ const OrderCooking = ({
       >
         <div className="message-header">
           <p>Pedido de {name} </p>
-
+{consolo}
           <p>{`${hourState} :${minuteState} : ${secondState}`}</p>
 
           <div class="control">
