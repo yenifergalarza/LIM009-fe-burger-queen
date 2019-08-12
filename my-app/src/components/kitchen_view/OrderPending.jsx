@@ -59,7 +59,7 @@ const OrderPending = ({ keyPENDING, id, time, name, status, cart }) => {
     <>
       <article
         style={{ overflow: "scroll" }}
-        className="message is-dark tile is-child  is-5 is-12-mobile"
+        className="message is-dark tile is-child  is-6 is-12-mobile"
         key={keyPENDING}
       >
         <div className="message-header">

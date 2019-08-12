@@ -42,13 +42,13 @@ const NavBar = () => {
                       COCINA
                     </Link>
                   </div>
-                  <div className="control">
+                 {/*  <div className="control">
                     <Link to="historial" class="title has-text-white ">
-                      {" "}
+                      
                       <i className="fas fa-clock"></i>
                       HISTORIAL
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

@@ -84,7 +84,7 @@ const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
   return (
     <>
       <article
-        className="message is-dark  tile is-child is-5 is-12-mobile"
+        className="message is-dark  tile is-child is-6 is-12-mobile"
         key={keyPENDING}
         style={{ overflow: "scroll" }}
       >
