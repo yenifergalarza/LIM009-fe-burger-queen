@@ -135,6 +135,7 @@ exports[`matches snapshot 1`] = `
           >
             <button
               class="tile is-child button is-warning columns is-mobile"
+              data-testid="buttontag"
             >
               SANDWICHS
             </button>
@@ -144,10 +145,15 @@ exports[`matches snapshot 1`] = `
           >
             <button
               class="tile is-child button is-warning columns is-mobile"
+              data-testid="buttontag"
             >
               BEBIDAS
             </button>
           </div>
+          <div
+            class="tile is-child buttons is-12 is-centered columns is-mobile"
+            data-testid="subbuttontag"
+          />
         </div>
       </div>
     </div>

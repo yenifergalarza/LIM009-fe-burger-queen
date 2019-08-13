@@ -6,7 +6,10 @@ const SubButton = ({ productElement, addProduct }) => {
     return <></>;
   }
   return (
-    <div className="tile is-child buttons is-12 is-centered columns is-mobile">
+    <div
+      data-testid="subbuttontag"
+      className="tile is-child buttons is-12 is-centered columns is-mobile"
+    >
       {productElement.map(individualProduct => {
         return (
           <Button

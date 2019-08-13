@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="tile is-child buttons is-12 is-centered columns is-mobile"
+    data-testid="subbuttontag"
+  >
+    <div
+      class="field is-grouped"
+    >
+      <button
+        class="button is-outlined "
+        data-testid="buttontag"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
