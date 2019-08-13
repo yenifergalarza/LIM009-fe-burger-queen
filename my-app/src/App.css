@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:900&display=swap');
 .App {
   text-align: center;
 }
 
 
 .App-logo {
-  max-height: 76px !important;
+
+  max-height: 93px !important;
   position: absolute;
   left: 0px;
-  top: -3px;
+  top: -22px;
+
 }
 
 .App-Header
@@ -18,7 +20,7 @@
 
 }
 .navbar.is-warning, .App-Header:hover {
-
+  font-family: 'Alegreya Sans', sans-serif;
   background-color: #ed7902 !important;
   color: rgba(255, 255, 255, 0.7) !important;
 }
@@ -37,5 +39,9 @@ padding-left: 60px !important;}
 .displayBlock{
   
     display: block !important;
-}
-
+};
+  .percent-65{
+      width: 62% !important;
+      margin-left: 2% !important;
+  }
+  

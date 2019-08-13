@@ -77,7 +77,7 @@ const MenuView = () => {
     ordersData.add({
       name: clientName,
       cart: products,
-      status: "pending",
+      status: "pendiente",
       time: new Date()
     });
     setClient("");
@@ -92,7 +92,7 @@ const MenuView = () => {
         {loading && <span>Document: Loading...</span>}
         {value && (
           <span>
-            Collection:{" "}
+         
             {value.docs.map(doc => (
               <React.Fragment key={doc.id}>
                 {JSON.stringify(doc.data())},{" "}
@@ -102,7 +102,10 @@ const MenuView = () => {
         )}
       </p> */}
 
-      <div className="columns container is-fluid">
+      <div
+        className="columns container is-fluid box "
+        style={{ height: 45 + "vh" }}
+      >
         <ContainerMenu addProduct={addProduct} />
         <ProductList
           products={products}
