@@ -13,13 +13,19 @@ const KitchenView = () => {
     }
   );
 
-  const [valueFinished] = useCollection(ordersData.where("status", "==", "entregado"), {
-    snapshotListenOptions: { includeMetadataChanges: true }
-  });
+  const [valueFinished] = useCollection(
+    ordersData.where("status", "==", "entregado"),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true }
+    }
+  );
 
-  const [valueCooking] = useCollection(ordersData.where("status", "==", "cocinando"), {
-    snapshotListenOptions: { includeMetadataChanges: true }
-  });
+  const [valueCooking] = useCollection(
+    ordersData.where("status", "==", "cocinando"),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true }
+    }
+  );
 
   const [state, setState] = useState("pending");
 
