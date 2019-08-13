@@ -11,12 +11,7 @@ const NavBar = () => {
         aria-label="main navigation"
         style={{ "min-height": 2.25 + "rem" }}
       >
-        <h1
-          className="  column is-12 has-text-centered "
-         
-        >
-          BURGER QUEEN
-        </h1>
+        <h1 className="  column is-12 has-text-centered ">BURGER QUEEN</h1>
       </nav>
       <nav className="navbar is-warning">
         <div className="container">
@@ -42,7 +37,7 @@ const NavBar = () => {
                       COCINA
                     </Link>
                   </div>
-                 {/*  <div className="control">
+                  {/*  <div className="control">
                     <Link to="historial" class="title has-text-white ">
                       
                       <i className="fas fa-clock"></i>

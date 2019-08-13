@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
-import Footer from "../footer";
+//import Footer from "../footer";
 import { DB } from "../../config/firebase";
 import OrderPending from "../kitchen_view/OrderPending.jsx";
 import OrderCooking from "../kitchen_view/OrderCooking";
@@ -25,7 +25,7 @@ const KitchenView = () => {
 
   return (
     <>
-      <section class="hero is-white">
+      <section class="hero is-dark">
         <div class="hero-body ">
           <div class="container ">
             <h1 class="title has-text-centered">
@@ -48,8 +48,8 @@ const KitchenView = () => {
               <div className="tabs is-fullwidth is-centered is-boxed">
                 <ul className="buttons has-addons">
                   <li className="control button  is-dark  ">
-                    <span className="has-text-centered"
-                     
+                    <span
+                      className="has-text-centered"
                       onClick={() => {
                         setState("pending");
                       }}
@@ -57,11 +57,10 @@ const KitchenView = () => {
                       Pendiente
                     </span>
                   </li>
-                 
-                  <li  className="control button is-dark">
-                    <span className="has-text-centered"
-                     
-                     
+
+                  <li className="control button is-dark">
+                    <span
+                      className="has-text-centered"
                       onClick={() => {
                         setState("cooking");
                       }}
@@ -69,10 +68,9 @@ const KitchenView = () => {
                       Cocinando
                     </span>
                   </li>
-                  <li  className="control button is-dark">
-                    <span className="has-text-centered "
-                     
-                     
+                  <li className="control button is-dark">
+                    <span
+                      className="has-text-centered "
                       onClick={() => {
                         setState("finished");
                       }}
@@ -82,89 +80,89 @@ const KitchenView = () => {
                   </li>
                 </ul>
               </div>
-            </div> </div>
+            </div>{" "}
+          </div>
 
-            <div className="displayFlex">
-              {error && <strong>Error: {JSON.stringify(error)}</strong>}
-              {loading && (
-                <progress class="progress is-medium is-dark" max="100">
-                  45%
-                </progress>
-              )}
-              {state === "pending" && (
-                <div  style={{ padding: 2 + "em" }}>
-                  {value && (
-                    <div
-                      className="columns is-multiline is-parent is-12-desktop  is-12-mobile table-container"
-                      style={{ padding: 2 + "em" }}
-                    >
-                      {value.docs.map(doc => (
-                        <OrderPending
-                          key={doc.id}
-                          name={doc.data().name}
-                          time={doc.data().time}
-                          id={doc.id}
-                          cart={doc.data().cart}
-                          status={doc.data().status}
-                        ></OrderPending>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+          <div className="displayFlex">
+            {error && <strong>Error: {JSON.stringify(error)}</strong>}
+            {loading && (
+              <progress class="progress is-medium is-dark" max="100">
+                45%
+              </progress>
+            )}
+            {state === "pending" && (
+              <div style={{ padding: 2 + "em" }}>
+                {value && (
+                  <div
+                    className="columns is-multiline is-parent is-12-desktop  is-12-mobile table-container"
+                    style={{ padding: 2 + "em" }}
+                  >
+                    {value.docs.map(doc => (
+                      <OrderPending
+                        key={doc.id}
+                        name={doc.data().name}
+                        time={doc.data().time}
+                        id={doc.id}
+                        cart={doc.data().cart}
+                        status={doc.data().status}
+                      ></OrderPending>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
 
-              {state === "cooking" && (
-                <div  style={{ padding: 2 + "em" }}>
-                  {valueCooking && (
+            {state === "cooking" && (
+              <div style={{ padding: 2 + "em" }}>
+                {valueCooking && (
+                  <div
+                    className="columns is-multiline  is-parent is-12-desktop  is-12-mobile table-container"
+                    style={{ padding: 2 + "em" }}
+                  >
+                    {valueCooking.docs.map(doc => (
+                      <OrderCooking
+                        key={doc.id}
+                        name={doc.data().name}
+                        time={doc.data().time}
+                        id={doc.id}
+                        cart={doc.data().cart}
+                        status={doc.data().status}
+                      ></OrderCooking>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {state === "finished" && (
+            <div>
+              {value && (
+                <div
+                  className="tile is-parent is-12-desktop  is-12-mobile table-container"
+                  style={{ padding: 2 + "em" }}
+                >
+                  {valueFinished && (
                     <div
                       className="columns is-multiline  is-parent is-12-desktop  is-12-mobile table-container"
                       style={{ padding: 2 + "em" }}
                     >
-                      {valueCooking.docs.map(doc => (
-                        <OrderCooking
+                      {valueFinished.docs.map(doc => (
+                        <OrderFinished
                           key={doc.id}
                           name={doc.data().name}
                           time={doc.data().time}
                           id={doc.id}
                           cart={doc.data().cart}
                           status={doc.data().status}
-                        ></OrderCooking>
+                        ></OrderFinished>
                       ))}
                     </div>
                   )}
                 </div>
               )}
             </div>
-
-            {state === "finished" && (
-              <div>
-                {value && (
-                  <div
-                    className="tile is-parent is-12-desktop  is-12-mobile table-container"
-                    style={{ padding: 2 + "em" }}
-                  >
-                    {valueFinished && (
-                      <div
-                        className="columns is-multiline  is-parent is-12-desktop  is-12-mobile table-container"
-                        style={{ padding: 2 + "em" }}
-                      >
-                        {valueFinished.docs.map(doc => (
-                          <OrderFinished
-                            key={doc.id}
-                            name={doc.data().name}
-                            time={doc.data().time}
-                            id={doc.id}
-                            cart={doc.data().cart}
-                            status={doc.data().status}
-                          ></OrderFinished>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-         
+          )}
         </div>
       </div>
     </>

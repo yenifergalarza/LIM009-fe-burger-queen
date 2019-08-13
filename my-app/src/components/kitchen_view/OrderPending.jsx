@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { firebaseInit } from "../../config/firebase";
 
@@ -47,7 +46,7 @@ const OrderPending = ({ keyPENDING, id, time, name, status, cart }) => {
     };
 
     startTime();
-  },[]);
+  }, [hour, minute, second, stop]);
   const updateOrder = text => {
     const docOrder = firebaseInit.firestore().doc(`pedidos/${id}`);
     docOrder.update({

@@ -9,7 +9,6 @@ const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
   const second = time.toDate().getSeconds();
   let stop = true;
 
-  
   useEffect(() => {
     const startTime = () => {
       let dateNow = new Date();
@@ -47,7 +46,6 @@ const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
     startTime();
   });
 
-
   useEffect(() => {
     const startTime = () => {
       let dateNow = new Date();
@@ -80,7 +78,7 @@ const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
     };
 
     startTime();
-  },[]);
+  }, [hour, minute, second, stop]);
   return (
     <>
       <article
@@ -122,7 +120,6 @@ const OrderFinished = ({ keyPENDING, id, time, name, status, cart }) => {
               ))}
             </tbody>
           </table>
-         
         </div>
       </article>
     </>

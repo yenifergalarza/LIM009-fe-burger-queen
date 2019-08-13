@@ -114,7 +114,6 @@ const MenuView = () => {
           client={client}
         />
       </div>
-      
     </>
   );
 };

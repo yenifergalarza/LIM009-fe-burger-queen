@@ -45,7 +45,7 @@ const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
     };
 
     startTime();
-  },[]);
+  }, [hour, minute, second, stop]);
   const updateOrder = text => {
     const docOrder = firebaseInit.firestore().doc(`pedidos/${id}`);
     docOrder.update({

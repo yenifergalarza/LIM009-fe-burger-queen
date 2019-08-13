@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import "@testing-library/react/cleanup-after-each";
+import "@testing-library/jest-dom/extend-expect";
+import { render, fireEvent } from "@testing-library/react";
+import HiddenMessage from "../hidden-message";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
