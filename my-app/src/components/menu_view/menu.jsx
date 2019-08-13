@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import ProductList from "./productList.jsx";
 import ContainerMenu from "./containerMenu.jsx";
-/* import { useCollection } from "react-firebase-hooks/firestore"; */
-import { DB } from "../../config/firebase";
-import { Client } from "./Cliente";
-import Footer from "../footer";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { ordersData } from "../../services/firebase";
+import { Client } from "./cliente";
 
 const MenuView = () => {
   const [products, setProducts] = useState([]);
@@ -69,9 +68,13 @@ const MenuView = () => {
     return emptyArrayContent;
   };
 
+  // const [value, loading, error] = useCollection(ordersData, {
+  //   snapshotListenOptions: { includeMetadataChanges: true }
+  // });
+
   const sendOrders = (products, clientName) => {
     console.log("entre a firebase", products);
-    DB.add({
+    ordersData.add({
       name: clientName,
       cart: products,
       status: "pendiente",

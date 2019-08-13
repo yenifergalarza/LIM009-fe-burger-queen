@@ -11,7 +11,7 @@ const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
     <div className="buttons has-addons box is-centered">
       <button className="button is-dark">
         <span className="icon">
-          <i class="fas fa-money-bill"></i>
+          <i className="fas fa-money-bill"></i>
         </span>
         <span>${formatNumber(total)}</span>
       </button>
@@ -25,7 +25,7 @@ const ButtonOfTotal = ({ total, sendOrders, products, client }) => {
         }}
       >
         <span className="icon">
-          <i class="fas fa-receipt"></i>
+          <i className="fas fa-receipt"></i>
         </span>
         <span>enviar orden</span>
       </a>

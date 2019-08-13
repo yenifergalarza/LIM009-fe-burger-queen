@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 //import Footer from "../footer";
-import { DB } from "../../config/firebase";
+import { ordersData } from "../../services/firebase";
 import OrderPending from "../kitchen_view/OrderPending.jsx";
 import OrderCooking from "../kitchen_view/OrderCooking";
 import OrderFinished from "../kitchen_view/OrderFinished";
 const KitchenView = () => {
   const [value, loading, error] = useCollection(
-    DB.where("status", "==", "pendiente"),
+    ordersData.where("status", "==", "pendiente"),
     {
       snapshotListenOptions: { includeMetadataChanges: true }
     }
   );
 
-  const [valueFinished] = useCollection(DB.where("status", "==", "entregado"), {
+  const [valueFinished] = useCollection(ordersData.where("status", "==", "entregado"), {
     snapshotListenOptions: { includeMetadataChanges: true }
   });
 
-  const [valueCooking] = useCollection(DB.where("status", "==", "cocinando"), {
+  const [valueCooking] = useCollection(ordersData.where("status", "==", "cocinando"), {
     snapshotListenOptions: { includeMetadataChanges: true }
   });
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { firebaseInit } from "../../config/firebase";
+import { firebaseInit } from "../../services/firebase";
 const OrderCooking = ({ keyPENDING, id, time, name, status, cart }) => {
   const [hourState, setHourState] = useState(0);
   const [minuteState, setMinuteState] = useState(0);
