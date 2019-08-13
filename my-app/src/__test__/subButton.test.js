@@ -36,5 +36,4 @@ test("", () => {
   const descendant = getByTestId("buttontag");
 
   expect(ancestor).toContainElement(descendant);
-
 });
