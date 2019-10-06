@@ -16,19 +16,19 @@ const NavBar = () => {
       <nav className="navbar is-warning">
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item App-Header">
+            <Link to="#" className="navbar-item App-Header">
               <img src={logo} alt="burgerqueen logo" className="App-logo" />
             </Link>
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="field is-grouped ">
                   <div className="control">
-                    <a href="/#" class="title has-text-white ">
+                    <Link to="/" className="title has-text-white">
                       <span className="icon">
                         <i className="fas fa-pencil-alt"></i>
                       </span>
                       <span>ORDEN</span>
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="control">

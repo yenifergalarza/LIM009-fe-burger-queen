@@ -3,6 +3,7 @@ import Button from "../generic_components/button";
 import SubButton from "../generic_components/subButtons";
 
 const Breakfast = ({ allProducts, addProduct }) => {
+  console.log(allProducts);
   const [product, setProduct] = useState([...allProducts]);
 
   const filterSandwich = products => {
