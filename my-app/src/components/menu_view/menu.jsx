@@ -3,7 +3,7 @@ import ProductList from "./productList.jsx";
 import ContainerMenu from "./containerMenu.jsx";
 /* import { useCollection } from "react-firebase-hooks/firestore"; */
 import { ordersData } from "../../services/firebase";
-import { Client } from "./Cliente";
+import { Client } from "./cliente";
 import Footer from "../footer";
 
 const MenuView = () => {
